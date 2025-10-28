@@ -85,8 +85,8 @@
     <div id="admin-editor-mode" class="hidden mb-10 p-6 border-4 border-light-blue rounded-xl bg-white max-w-7xl mx-auto">
         <h2 class="text-2xl font-primary font-bold text-navy mb-4 border-b pb-2">Section Data Editor</h2>
         <p class="mb-4 text-sm text-gray-700 font-secondary">
-            Collaborators: Edit the JSON below to add, remove, or change sections.
-            <span class="font-bold text-red-600">IMPORTANT:</span> The keys (e.g., `news`, `opinion`) must be unique. The content must use valid HTML (like `<p>` tags). The `content` is what appears when the card is clicked.
+            This feature is not available right now, please refrain from using this until it is deleted or usable. -VT
+            <span class="font-bold text-red-600">IMPORTANT:</span> This editor is designed to be able to edit the site permanently. Currently, it does not serve this function. -VT
         </p>
         
         <textarea id="article-json-editor" class="w-full h-96 p-4 border border-gray-300 rounded-lg font-mono text-xs focus:ring-light-blue focus:border-light-blue transition-colors"></textarea>
@@ -94,11 +94,11 @@
         <div class="mt-4 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4">
             <button onclick="loadArticles(true)" 
                     class="bg-navy text-white hover:bg-navy/90 font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
-                Update Live Preview
+                Update Live Preview - This is WIP. -VT
             </button>
             <button onclick="generateCodeSnippet()" 
                     class="bg-green-500 text-white hover:bg-green-600 font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
-                Copy New Source Code to Clipboard
+                Copy New Source Code to Clipboard - This is WIP. -VT
             </button>
         </div>
 
@@ -137,7 +137,7 @@
                 <!-- Content will be injected here -->
             </div>
             <div class="mt-6 pt-4 border-t border-gray-200">
-                 <p class="text-sm text-gray-600 font-semibold">Note: In a full website, clicking this section would take you to a dedicated page with all articles. This is a navigation summary.</p>
+                 <p class="text-sm text-gray-600 font-semibold">This is a placeholder footer; buttons will be placed soon to navigate the site. - VT</p>
             </div>
         </div>
     </div>
@@ -151,7 +151,7 @@
                 category: "Section",
                 image: "https://placehold.co/600x400/003057/ffffff?text=NEWS",
                 content: `
-                    <p class="mb-4">This is the **News & Features** section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life.</p>
+                    <p class="mb-4">This is the <strong>News & Features</strong> section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life. The council corner is also hosted here, where all of the latest StuCo activities are posted!</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>New Robotics Club Takes Flight</li>
@@ -162,17 +162,17 @@
                 author: ""
             },
             opinion: {
-                title: "Editorials & Opinions",
-                description: "Thought-provoking essays and viewpoints from students and faculty on school policies and current events.",
+                title: "Fun & Games",
+                description: "The place for puzzles, riddles, polls, and more!",
                 category: "Section",
                 image: "https://placehold.co/600x400/9BCBEB/003057?text=OPINION",
                 content: `
-                    <p class="mb-4">The **Editorials & Opinions** section is the place for constructive debate and diverse perspectives. Submissions are reviewed by the Editorial Board.</p>
+                    <p class="mb-4">The <strong>Fun & Games</strong> section is where all of the games made by our staff go! This may include word searches, crosswords, fun facts, and more! In addition, polls from the EA community will be paced here. Does everyone agree?</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
-                        <li>The Case for a Later Start Time</li>
-                        <li>Why Everyone Should Join a Club</li>
-                        <li>Letter to the Editor: Homework Policy</li>
+                        <li>Fall Polls - Favorite Song, Holiday, and Fall Food!</li>
+                        <li>Crossword</li>
+                        <li>[PLACEHOLDER]</li>
                     </ul>
                 `,
                 author: ""
@@ -183,7 +183,7 @@
                 category: "Section",
                 image: "https://placehold.co/600x400/003057/ffffff?text=SPORTS",
                 content: `
-                    <p class="mb-4">Welcome to the **Sports & Athletics** hub. We provide full game recaps, coach interviews, and look ahead at upcoming match-ups.</p>
+                    <p class="mb-4">Welcome to the <strong>Sports & Athletics</strong> hub. We provide full game recaps, coach interviews, and look ahead at upcoming match-ups.</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>Fall Sports Recap: Dominant Soccer Season</li>
@@ -199,7 +199,7 @@
                 category: "Section",
                 image: "https://placehold.co/600x400/9BCBEB/003057?text=ARTS",
                 content: `
-                    <p class="mb-4">The **Arts & Culture** section celebrates creativity! Find reviews, interviews, and features on student artists, musicians, and performers.</p>
+                    <p class="mb-4">The <strong>Arts & Culture</strong> section celebrates creativity! Find reviews, interviews, and features on student artists, musicians, and performers.</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>Behind the Scenes: The Fall Play</li>
