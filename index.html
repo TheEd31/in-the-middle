@@ -1,42 +1,427 @@
-{
-    "news": {
-        "title": "News & Features",
-        "description": "The latest happenings around the school, from campus events to staff profiles.",
-        "category": "Section",
-        "image": "https://placehold.co/600x400/003057/ffffff?text=NEWS",
-        "content": "\n                    <p class=\"mb-4\">This is the **News & Features** section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life.</p>\n                    <p class=\"font-bold text-lg text-navy mb-2\">In This Edition:</p>\n                    <ul class=\"list-disc pl-5 space-y-1\">\n                        <li>New Robotics Club Takes Flight</li>\n                        <li>Student Council Election Results Announced</li>\n                        <li>Interview with Principal Smith</li>\n                    </ul>\n                ",
-        "author": ""
-    },
-    "opinion": {
-        "title": "Editorials & Opinions",
-        "description": "Thought-provoking essays and viewpoints from students and faculty on school policies and current events.",
-        "category": "Section",
-        "image": "https://placehold.co/600x400/9BCBEB/003057?text=OPINION",
-        "content": "\n                    <p class=\"mb-4\">The **Editorials & Opinions** section is the place for constructive debate and diverse perspectives. Submissions are reviewed by the Editorial Board.</p>\n                    <p class=\"font-bold text-lg text-navy mb-2\">In This Edition:</p>\n                    <ul class=\"list-disc pl-5 space-y-1\">\n                        <li>The Case for a Later Start Time</li>\n                        <li>Why Everyone Should Join a Club</li>\n                        <li>Letter to the Editor: Homework Policy</li>\n                    </ul>\n                ",
-        "author": ""
-    },
-    "athletics": {
-        "title": "Sports & Athletics",
-        "description": "Scores, team highlights, and spotlights on middle school athletes across all seasonal sports.",
-        "category": "Section",
-        "image": "https://placehold.co/600x400/003057/ffffff?text=SPORTS",
-        "content": "\n                    <p class=\"mb-4\">Welcome to the **Sports & Athletics** hub. We provide full game recaps, coach interviews, and look ahead at upcoming match-ups.</p>\n                    <p class=\"font-bold text-lg text-navy mb-2\">In This Edition:</p>\n                    <ul class=\"list-disc pl-5 space-y-1\">\n                        <li>Fall Sports Recap: Dominant Soccer Season</li>\n                        <li>Meet the Captain: Field Hockey Star</li>\n                        <li>Basketball Tryouts Schedule</li>\n                    </ul>\n                ",
-        "author": ""
-    },
-    "arts": {
-        "title": "Arts & Culture",
-        "description": "Coverage of drama productions, art shows, band concerts, and creative student work.",
-        "category": "Section",
-        "image": "https://placehold.co/600x400/9BCBEB/003057?text=ARTS",
-        "content": "\n                    <p class=\"mb-4\">The **Arts & Culture** section celebrates creativity! Find reviews, interviews, and features on student artists, musicians, and performers.</p>\n                    <p class=\"font-bold text-lg text-navy mb-2\">In This Edition:</p>\n                    <ul class=\"list-disc pl-5 space-y-1\">\n                        <li>Behind the Scenes: The Fall Play</li>\n                        <li>Art Room Spotlight: Ceramics</li>\n                        <li>Student Band Review</li>\n                    </ul>\n                ",
-        "author": ""
-    },
-    "join": {
-        "title": "Join the Staff!",
-        "description": "Are you interested in writing, photography, or editing? See how you can get involved!",
-        "category": "Opportunity",
-        "image": "https://placehold.co/600x400/003057/9BCBEB?text=JOIN+US",
-        "content": "\n                    <p class=\"text-lg font-bold text-navy mb-4\">Are you interested in being on the Newspaper staff?</p>\n                    <p class=\"mb-6\">We are still looking for dedicated **writing staff and photographers** to help us cover all the exciting events and student voices at the school!</p>\n\n                    <h4 class=\"text-xl font-primary font-bold text-navy mb-2\">Newspaper Staff</h4>\n                    <ul class=\"list-disc pl-5 space-y-2 mb-6\">\n                        <li><strong>Faculty Advisors:</strong> Mrs. Howlin and Ms. McGill</li>\n                        <li><strong>Editors-in-Chief:</strong> Ellen Le and Sara Adibi</li>\n                        <li><strong>Content Editor:</strong> [Content Editor Name TBD]</li>\n                    </ul>\n\n                    <p class=\"text-base\">\n                        Reach out to <span class=\"font-bold\">Ms. McGill</span> at \n                        <a href=\"mailto:mmcgill@episcopalacademy.org\" class=\"text-light-blue hover:text-navy font-semibold underline\">mmcgill@episcopalacademy.org</a> \n                        or **Ellen Le** for more information and to find out how you can contribute.\n                    </p>\n                ",
-        "author": ""
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In The Middle - Middle School Newspaper Homepage</title>
+    <!-- Load Tailwind CSS for utility styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Google Fonts for Merriweather (Primary) and Open Sans (Secondary) -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define Brand Colors and Fonts based on the Brand Guide */
+        :root {
+            --color-navy: #003057;      /* Primary: Blue (Navy) */
+            --color-light-blue: #9BCBEB; /* Secondary: Light Blue */
+            --font-primary: 'Merriweather', serif; /* Website Typeface 1 */
+            --font-secondary: 'Open Sans', sans-serif; /* Website Typeface 2 */
+        }
+        .text-navy { color: var(--color-navy); }
+        .bg-navy { background-color: var(--color-navy); }
+        .text-light-blue { color: var(--color-light-blue); }
+        .border-light-blue { border-color: var(--color-light-blue); }
+        .hover\:bg-light-blue-100:hover { background-color: rgba(155, 203, 235, 0.1); } /* Light hover effect */
+        .bg-light-blue-fade { background-color: rgba(155, 203, 235, 0.2); } /* Faded background for notes */
+        .font-primary { font-family: var(--font-primary); }
+        .font-secondary { font-family: var(--font-secondary); }
+
+        /* Custom scrollbar for newspaper/magazine feel */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f0f0; }
+        ::-webkit-scrollbar-thumb { background: var(--color-light-blue); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-navy); }
+
+        /* General layout ensures full width and responsive design */
+        body {
+            background-color: #f7f9fb; /* Off-white background */
+            font-family: var(--font-secondary);
+        }
+
+        /* Modal specific styling */
+        .modal-overlay {
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.75);
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            max-height: 90vh;
+            max-width: 95vw;
+            width: 800px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Interactive Card Hover Effect */
+        .article-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 48, 87, 0.1), 0 4px 6px -2px rgba(0, 48, 87, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased p-4 sm:p-8">
+
+    <!-- Header Section - Uses Navy Primary Color. Title Centered as requested. -->
+    <header class="mb-8 border-b-4 border-navy pb-4 text-center">
+        <h1 class="text-4xl sm:text-6xl font-black font-primary text-navy tracking-tight">
+            IN THE MIDDLE
+        </h1>
+        <p class="text-xl sm:text-2xl font-secondary text-gray-600 mt-2">
+            The Official Middle School Newspaper
+        </p>
+    </header>
+
+    <!-- Admin/Editor Mode Toggle Button (Visible in the embedded view for easy access) -->
+    <div class="text-center mb-6">
+        <button onclick="toggleAdminMode()" id="admin-toggle-btn" 
+                class="bg-light-blue text-navy hover:bg-light-blue-100 font-semibold py-2 px-4 rounded-full text-sm transition-colors border-2 border-light-blue shadow-md">
+            Enable Editor Mode (Collaborators Only)
+        </button>
+    </div>
+
+    <!-- Admin/Editor Mode Interface (Hidden by Default) -->
+    <div id="admin-editor-mode" class="hidden mb-10 p-6 border-4 border-light-blue rounded-xl bg-white max-w-7xl mx-auto">
+        <h2 class="text-2xl font-primary font-bold text-navy mb-4 border-b pb-2">Section Data Editor</h2>
+        <p class="mb-4 text-sm text-gray-700 font-secondary">
+            Collaborators: Edit the JSON below to add, remove, or change sections.
+            <span class="font-bold text-red-600">IMPORTANT:</span> The keys (e.g., `news`, `opinion`) must be unique. The content must use valid HTML (like `<p>` tags). The `content` is what appears when the card is clicked.
+        </p>
+        
+        <textarea id="article-json-editor" class="w-full h-96 p-4 border border-gray-300 rounded-lg font-mono text-xs focus:ring-light-blue focus:border-light-blue transition-colors"></textarea>
+        
+        <div class="mt-4 flex flex-col sm:flex-row justify-end space-y-3 sm:space-y-0 sm:space-x-4">
+            <button onclick="loadArticles(true)" 
+                    class="bg-navy text-white hover:bg-navy/90 font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                Update Live Preview
+            </button>
+            <button onclick="generateCodeSnippet()" 
+                    class="bg-green-500 text-white hover:bg-green-600 font-semibold py-3 px-6 rounded-lg transition-colors shadow-lg">
+                Copy New Source Code to Clipboard
+            </button>
+        </div>
+
+        <!-- Code Snippet Output Area (Hidden until generated) -->
+        <div id="code-snippet-output" class="hidden mt-6">
+            <h3 class="text-lg font-primary font-bold text-navy mb-2">New Code Snippet for Google Site Embed:</h3>
+            <textarea id="generated-code" class="w-full h-40 p-4 border border-green-500 bg-green-50 rounded-lg font-mono text-xs" readonly></textarea>
+            <p class="text-sm text-red-500 mt-2">
+                <span class="font-bold">Next Steps:</span> 1. Copy the code above. 2. Go to your Google Site embed source. 3. Replace the old `const articles = {...}` block with this new one.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- Main Content Grid - Adjusted to lg:grid-cols-3 for better visual balance with 5 items -->
+    <main id="article-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Sections will be generated here by JavaScript -->
+        <p id="loading-message" class="col-span-full text-center text-gray-500">Loading sections...</p>
+    </main>
+
+    <!-- Modal Structure (Hidden by default) -->
+    <div id="article-modal" class="modal-overlay fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-opacity">
+        <div class="modal-content bg-white rounded-xl shadow-2xl p-6 overflow-y-auto">
+            <!-- Modal Header -->
+            <div class="flex justify-between items-start border-b border-light-blue pb-3 mb-4 sticky top-0 bg-white">
+                <h3 id="modal-title" class="text-2xl font-primary font-extrabold text-navy"></h3>
+                <button onclick="closeModal()" class="text-navy hover:text-red-500 transition-colors p-1 -mt-1 -mr-1 rounded-full hover:bg-gray-100" aria-label="Close section info">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Modal Body (Section Content) -->
+            <div id="modal-content-body" class="text-gray-800 font-secondary leading-relaxed text-base">
+                <!-- Content will be injected here -->
+            </div>
+            <div class="mt-6 pt-4 border-t border-gray-200">
+                 <p class="text-sm text-gray-600 font-semibold">Note: In a full website, clicking this section would take you to a dedicated page with all articles. This is a navigation summary.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Default Section Data - COLLABORATORS WILL EDIT THIS BLOCK
+        let articles = {
+            news: {
+                title: "News & Features",
+                description: "The latest happenings around the school, from campus events to staff profiles.",
+                category: "Section",
+                image: "https://placehold.co/600x400/003057/ffffff?text=NEWS",
+                content: `
+                    <p class="mb-4">This is the **News & Features** section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life.</p>
+                    <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>New Robotics Club Takes Flight</li>
+                        <li>Student Council Election Results Announced</li>
+                        <li>Interview with Principal Smith</li>
+                    </ul>
+                `,
+                author: ""
+            },
+            opinion: {
+                title: "Editorials & Opinions",
+                description: "Thought-provoking essays and viewpoints from students and faculty on school policies and current events.",
+                category: "Section",
+                image: "https://placehold.co/600x400/9BCBEB/003057?text=OPINION",
+                content: `
+                    <p class="mb-4">The **Editorials & Opinions** section is the place for constructive debate and diverse perspectives. Submissions are reviewed by the Editorial Board.</p>
+                    <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>The Case for a Later Start Time</li>
+                        <li>Why Everyone Should Join a Club</li>
+                        <li>Letter to the Editor: Homework Policy</li>
+                    </ul>
+                `,
+                author: ""
+            },
+            athletics: {
+                title: "Sports & Athletics",
+                description: "Scores, team highlights, and spotlights on middle school athletes across all seasonal sports.",
+                category: "Section",
+                image: "https://placehold.co/600x400/003057/ffffff?text=SPORTS",
+                content: `
+                    <p class="mb-4">Welcome to the **Sports & Athletics** hub. We provide full game recaps, coach interviews, and look ahead at upcoming match-ups.</p>
+                    <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Fall Sports Recap: Dominant Soccer Season</li>
+                        <li>Meet the Captain: Field Hockey Star</li>
+                        <li>Basketball Tryouts Schedule</li>
+                    </ul>
+                `,
+                author: ""
+            },
+            arts: {
+                title: "Arts & Culture",
+                description: "Coverage of drama productions, art shows, band concerts, and creative student work.",
+                category: "Section",
+                image: "https://placehold.co/600x400/9BCBEB/003057?text=ARTS",
+                content: `
+                    <p class="mb-4">The **Arts & Culture** section celebrates creativity! Find reviews, interviews, and features on student artists, musicians, and performers.</p>
+                    <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Behind the Scenes: The Fall Play</li>
+                        <li>Art Room Spotlight: Ceramics</li>
+                        <li>Student Band Review</li>
+                    </ul>
+                `,
+                author: ""
+            },
+            join: {
+                title: "Join the Staff!",
+                description: "Are you interested in writing, photography, or editing? See how you can get involved!",
+                category: "Opportunity",
+                image: "https://placehold.co/600x400/003057/9BCBEB?text=JOIN+US",
+                content: `
+                    <p class="text-lg font-bold text-navy mb-4">Are you interested in being on the Newspaper staff?</p>
+                    <p class="mb-6">We are still looking for dedicated **writing staff and photographers** to help us cover all the exciting events and student voices at the school!</p>
+
+                    <h4 class="text-xl font-primary font-bold text-navy mb-2">Newspaper Staff</h4>
+                    <ul class="list-disc pl-5 space-y-2 mb-6">
+                        <li><strong>Faculty Advisors:</strong> Mrs. Howlin and Ms. McGill</li>
+                        <li><strong>Editors-in-Chief:</strong> Ellen Le and Sara Adibi</li>
+                        <li><strong>Content Editor:</strong> [Content Editor Name TBD]</li>
+                    </ul>
+
+                    <p class="text-base">
+                        Reach out to <span class="font-bold">Ms. McGill</span> at 
+                        <a href="mailto:mmcgill@episcopalacademy.org" class="text-light-blue hover:text-navy font-semibold underline">mmcgill@episcopalacademy.org</a> 
+                        or **Ellen Le** for more information and to find out how you can contribute.
+                    </p>
+                `,
+                author: ""
+            }
+        };
+
+        const modal = document.getElementById('article-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-content-body');
+        const articleGrid = document.getElementById('article-grid');
+        const body = document.body;
+        const editorMode = document.getElementById('admin-editor-mode');
+        const jsonEditor = document.getElementById('article-json-editor');
+        const loadingMessage = document.getElementById('loading-message');
+        const toggleBtn = document.getElementById('admin-toggle-btn');
+
+
+        /**
+         * Renders the article grid based on the current 'articles' (now sections) object.
+         * @param {boolean} showSuccess - Whether to show a success message after loading.
+         */
+        function loadArticles(showSuccess = false) {
+            articleGrid.innerHTML = ''; // Clear existing content
+            loadingMessage.classList.add('hidden');
+            let hasArticles = false;
+
+            try {
+                // 1. If called from the editor, update the 'articles' object from the JSON text area
+                if (showSuccess) {
+                    articles = JSON.parse(jsonEditor.value);
+                }
+
+                // 2. Iterate through the articles object and build the HTML card for each.
+                for (const key in articles) {
+                    if (articles.hasOwnProperty(key)) {
+                        const section = articles[key];
+                        hasArticles = true;
+                        
+                        const cardHtml = `
+                            <div class="article-card bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:border-light-blue-100 cursor-pointer" onclick="openModal('${key}')">
+                                <!-- Image with fallback placeholder logic -->
+                                <img class="w-full h-48 object-cover object-center" 
+                                     src="${section.image || 'https://placehold.co/600x400/f0f0f0/666666?text=NO+IMAGE'}" 
+                                     alt="${section.title}" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/f0f0f0/666666?text=NO+IMAGE';">
+                                
+                                <div class="p-6 h-full flex flex-col justify-between">
+                                    <div>
+                                        <!-- Card Title is now the Section Title -->
+                                        <p class="text-xs font-semibold uppercase text-light-blue mb-1">${section.category || 'Section'}</p>
+                                        <h2 class="text-xl font-primary font-extrabold text-navy leading-snug">
+                                            ${section.title || 'Untitled Section'}
+                                        </h2>
+                                        <!-- Card Description is the Section Summary -->
+                                        <p class="text-gray-700 mt-3 line-clamp-3 font-secondary text-sm">
+                                            ${section.description || 'Click to view the details for this section.'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        articleGrid.insertAdjacentHTML('beforeend', cardHtml);
+                    }
+                }
+
+                if (!hasArticles) {
+                    articleGrid.innerHTML = '<p class="col-span-full text-center text-gray-500 py-10">No sections found in the current edition.</p>';
+                }
+
+                if (showSuccess) {
+                    toggleBtn.textContent = 'Sections Updated! Click to Close Editor';
+                    toggleBtn.classList.add('bg-green-500', 'hover:bg-green-600', 'text-white', 'border-green-500');
+                    setTimeout(() => {
+                        toggleBtn.classList.remove('bg-green-500', 'hover:bg-green-600', 'text-white', 'border-green-500');
+                        toggleBtn.classList.add('bg-light-blue', 'text-navy', 'border-light-blue');
+                        toggleBtn.textContent = 'Disable Editor Mode';
+                    }, 3000);
+                }
+            } catch (error) {
+                articleGrid.innerHTML = `<p class="col-span-full text-center text-red-600 py-10 font-bold">Error loading sections: Invalid JSON format.</p><p class="col-span-full text-center text-red-500 text-sm">${error.message}</p>`;
+                console.error("Error parsing articles JSON:", error);
+            }
+        }
+
+
+        /**
+         * Toggles the visibility of the admin editor mode.
+         */
+        function toggleAdminMode() {
+            const isHidden = editorMode.classList.contains('hidden');
+            if (isHidden) {
+                // Populate the editor with the current article data (formatted nicely)
+                try {
+                    jsonEditor.value = JSON.stringify(articles, null, 4);
+                } catch (e) {
+                    jsonEditor.value = "Error: Could not stringify current articles object.";
+                }
+                editorMode.classList.remove('hidden');
+                articleGrid.classList.add('opacity-50', 'pointer-events-none');
+                toggleBtn.textContent = 'Disable Editor Mode';
+            } else {
+                editorMode.classList.add('hidden');
+                articleGrid.classList.remove('opacity-50', 'pointer-events-none');
+                toggleBtn.textContent = 'Enable Editor Mode (Collaborators Only)';
+            }
+        }
+
+        /**
+         * Generates the new JavaScript code snippet for the Google Site embed.
+         */
+        function generateCodeSnippet() {
+            const outputArea = document.getElementById('code-snippet-output');
+            const generatedCode = document.getElementById('generated-code');
+            
+            try {
+                // Safely get the JSON from the editor and format it back to a string
+                const articlesObj = JSON.parse(jsonEditor.value);
+                
+                // Use a simple, un-formatted JSON string for easier pasting into the JS code block
+                const jsonString = JSON.stringify(articlesObj, null, 4).replace(/`/g, '\\`');
+
+                const codeSnippet = `let articles = ${jsonString};`;
+
+                generatedCode.value = codeSnippet;
+                outputArea.classList.remove('hidden');
+
+                // Copy to clipboard logic
+                document.execCommand('copy'); 
+                
+                toggleBtn.textContent = 'Code Copied! Replace Old Code Block';
+                setTimeout(() => {
+                    toggleBtn.textContent = 'Disable Editor Mode';
+                }, 3000);
+
+            } catch (error) {
+                generatedCode.value = `Error: Invalid JSON structure. Please fix the syntax error: ${error.message}`;
+                outputArea.classList.remove('hidden');
+            }
+        }
+
+
+        /**
+         * Handles the opening of the modal with the full section content.
+         */
+        function openModal(articleKey) {
+            const article = articles[articleKey];
+            if (!article) return;
+
+            // Update modal content
+            modalTitle.innerHTML = `<span class="text-sm font-semibold uppercase text-light-blue block">${article.category || 'Section'}</span>${article.title || 'Untitled'}`;
+            modalBody.innerHTML = article.content || '<p>Content missing.</p>';
+            if (article.author) {
+                modalBody.innerHTML += `<p class="mt-6 text-right font-semibold text-sm italic">— By ${article.author}</p>`;
+            }
+
+
+            // Show modal and prevent background scrolling
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            body.style.overflow = 'hidden';
+            
+            // Focus on the close button for accessibility (optional but good practice)
+            modal.querySelector('button').focus();
+        }
+
+        /**
+         * Closes the section modal.
+         */
+        function closeModal() {
+            // Hide modal and re-enable background scrolling
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            body.style.overflow = '';
+        }
+
+        // --- Initialization and Event Listeners ---
+        window.onload = function() {
+            loadArticles();
+        };
+
+        // Close modal when clicking outside or pressing ESC
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('opacity-100')) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
