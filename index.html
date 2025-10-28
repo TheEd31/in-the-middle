@@ -116,7 +116,7 @@
     <!-- Main Content Grid - Adjusted to lg:grid-cols-3 for better visual balance with 5 items -->
     <main id="article-grid" class="grid gap-6 justify-center text-center md:grid-cols-2 lg:grid-cols-3 place-items-center">
         <!-- Sections will be generated here by JavaScript -->
-        <p id="loading-message" class="col-span-full text-center text-gray-500">Loading sections...</p>
+        <p id="loading-message" class="col-span-full text-center text-gray-500">Loading articles...</p>
     </main>
 
     <!-- Modal Structure (Hidden by default) -->
@@ -222,7 +222,7 @@
                     <ul class="list-disc pl-5 space-y-2 mb-6">
                         <li><strong>Faculty Advisors:</strong> Mrs. Silberman and Ms. McGill</li>
                         <li><strong>Editors-in-Chief:</strong> Ellen Le and Sara Adibi</li>
-                        <li><strong>Content Editor:</strong> [Content Editor Name TBD]</li>
+                        <li><strong>Content Editors:</strong> Leo Wang and Victor Tsai</li>
                     </ul>
 
                     <p class="text-base">
@@ -364,7 +364,7 @@
                 }, 3000);
 
             } catch (error) {
-                generatedCode.value = `Error: Invalid JSON structure. Please fix the syntax error: ${error.message}`;
+                generatedCode.value = `Invalid JSON structure. ERR: ${error.message}`;
                 outputArea.classList.remove('hidden');
             }
         }
