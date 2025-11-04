@@ -185,14 +185,15 @@
   let activeTarget = null;
   let hideTimeout = null;
 
-  function showTip(target, html) {
-    if (!html) return;
-    activeTarget = target;
-    floatTip.innerHTML = html;
-    floatTip.style.opacity = '1';
-    floatTip.style.transform = 'translate(-50%, -120%)';
-    positionTipOverElement(target);
-  }
+ function showTip(target, html) {
+  clearTimeout(hideTimeout); // cancel any scheduled hide
+  if (!html) return;
+  activeTarget = target;
+  floatTip.innerHTML = html;
+  floatTip.style.opacity = '1';
+  floatTip.style.transform = 'translate(-50%, -120%)';
+  positionTipOverElement(target);
+}
 
 function hideTip(withDelay = true) {
   activeTarget = null;
