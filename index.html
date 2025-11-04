@@ -203,17 +203,23 @@
 
 function hideTip(withDelay = true) {
   activeTarget = null;
-  if (withDelay) {
+  const doHide = () => {
+    floatTip.classList.remove('visible');
+    // reset transform for the next animation cycle
+    floatTip.style.transform = 'translate(-50%, -100%) scale(0.98)';
+    // force opacity back to 0 so it disappears even if transition is skipped
+    floatTip.style.opacity = '0';
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(() => {
-      floatTip.classList.remove('visible');
-      floatTip.style.transform = 'translate(-50%, -100%) scale(0.98)'; // reset for next animation
-      setTimeout(() => { floatTip.innerHTML = ''; }, 220);
-    }, 200);
+      floatTip.innerHTML = '';
+    }, 220); // wait for fade-out transition
+  };
+
+  if (withDelay) {
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(doHide, 120);
   } else {
-    floatTip.classList.remove('visible');
-    floatTip.style.transform = 'translate(-50%, -100%) scale(0.98)';
-    setTimeout(() => { floatTip.innerHTML = ''; }, 220);
+    doHide();
   }
 }
 
