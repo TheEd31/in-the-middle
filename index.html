@@ -209,7 +209,7 @@ function hideTip(withDelay = true) {
     hideTimeout = setTimeout(() => {
       floatTip.style.opacity = '0';
       setTimeout(() => { floatTip.innerHTML = ''; }, 220);
-    }, 120); // wait 120ms before hiding
+    }, 200); // wait 200ms before hiding (upd)
   } else {
     floatTip.style.opacity = '0';
     setTimeout(() => { floatTip.innerHTML = ''; }, 220);
