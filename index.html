@@ -59,6 +59,32 @@
             transform: translateY(-4px);
             box-shadow: 0 10px 15px -3px rgba(0, 48, 87, 0.1), 0 4px 6px -2px rgba(0, 48, 87, 0.05);
         }
+        .tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 220px;
+  background-color: var(--color-navy);
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 6px 8px;
+  position: absolute;
+  z-index: 10;
+  bottom: 125%; /* positions above text */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
     </style>
 </head>
 <body class="antialiased p-4 sm:p-8">
@@ -154,7 +180,11 @@
                     <p class="mb-4">This is the <strong>News & Features</strong> section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life. The council corner is also hosted here, where all of the latest StuCo activities are posted!</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
-                        <li>Spirit Week</li>
+                        <li>
+            <span class="tooltip">Spirit Week
+                <span class="tooltiptext">A week of different-themed dressdown days! Authors: <i>Liv, Alana, Peyton, and Sara.</i></span>
+            </span>
+        </li>
                         <li>Harvest Day</li>
                         <li>Echo Hill/Washington D.C.</li>
                         <li>Council Corner</li>
@@ -222,9 +252,9 @@
                 image: "https://upload.wikimedia.org/wikipedia/commons/1/14/No_Image_Available.jpg",
                 content: `
                     <p class="text-lg font-bold text-navy mb-4">Are you interested in being on the Newspaper staff?</p>
-                    <p class="mb-6">We are still looking for dedicated <span class="font-bold">writing staff and photographers</span> to help us cover all the exciting events and student voices at the school!</p>
+                    <p class="mb-6">We are still looking for dedicated <span class="font-bold">writing staff and photographers</span> to help us cover all the exciting news around the school!</p>
 
-                    <h4 class="text-xl font-primary font-bold text-navy mb-2">Newspaper Staff</h4>
+                    <h4 class="text-xl font-primary font-bold text-navy mb-2">《 Head Newspaper Staff 》</h4>
                     <ul class="list-disc pl-5 space-y-2 mb-6">
                         <li><strong>Faculty Advisors:</strong> Ms. Silberman and Ms. McGill</li>
                         <li><strong>Editors-in-Chief:</strong> Ellen Le and Sara Adibi</li>
