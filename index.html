@@ -72,10 +72,15 @@
   pointer-events: none;
   max-width: 320px;
   text-align: left;
-  transform: translate(-50%, -120%);
+  transform: translate(-50%, -100%) scale(0.98);
   opacity: 0;
   transition: opacity 0.18s ease, transform 0.18s ease;
   box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+
+.tooltip-floating.visible {
+  opacity: 1;
+  transform: translate(-50%, -120%) scale(1);
 }
 
 .tooltip-floating::after {
@@ -186,6 +191,7 @@
   let hideTimeout = null;
 
  function showTip(target, html) {
+  floatTip.classList.add('visible');
   clearTimeout(hideTimeout); // cancel any scheduled hide
   if (!html) return;
   activeTarget = target;
@@ -196,6 +202,7 @@
 }
 
 function hideTip(withDelay = true) {
+    floatTip.classList.remove('visible');
   activeTarget = null;
   if (withDelay) {
     clearTimeout(hideTimeout);
