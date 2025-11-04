@@ -202,16 +202,17 @@
 }
 
 function hideTip(withDelay = true) {
-    floatTip.classList.remove('visible');
   activeTarget = null;
   if (withDelay) {
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(() => {
-      floatTip.style.opacity = '0';
+      floatTip.classList.remove('visible');
+      floatTip.style.transform = 'translate(-50%, -100%) scale(0.98)'; // reset for next animation
       setTimeout(() => { floatTip.innerHTML = ''; }, 220);
-    }, 200); // wait 200ms before hiding (upd)
+    }, 200);
   } else {
-    floatTip.style.opacity = '0';
+    floatTip.classList.remove('visible');
+    floatTip.style.transform = 'translate(-50%, -100%) scale(0.98)';
     setTimeout(() => { floatTip.innerHTML = ''; }, 220);
   }
 }
