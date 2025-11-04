@@ -194,12 +194,19 @@
     positionTipOverElement(target);
   }
 
-  function hideTip() {
-    activeTarget = null;
-    floatTip.style.opacity = '0';
+function hideTip(withDelay = true) {
+  activeTarget = null;
+  if (withDelay) {
     clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(() => { floatTip.innerHTML = ''; }, 220);
+    hideTimeout = setTimeout(() => {
+      floatTip.style.opacity = '0';
+      setTimeout(() => { floatTip.innerHTML = ''; }, 220);
+    }, 120); // wait 120ms before hiding
+  } else {
+    floatTip.style.opacity = '0';
+    setTimeout(() => { floatTip.innerHTML = ''; }, 220);
   }
+}
 
   function positionTipOverElement(target) {
     if (!target) return;
@@ -226,14 +233,14 @@
     showTip(t, tt.innerHTML);
   }, true);
 
- document.body.addEventListener('pointerleave', (e) => {
+document.body.addEventListener('pointerleave', (e) => {
   const t = e.target.closest('.tooltip');
-  // Only hide if moving to something that's not another tooltip
   const toEl = e.relatedTarget && e.relatedTarget.closest
     ? e.relatedTarget.closest('.tooltip')
     : null;
-  if (!t || toEl) return;
-  hideTip();
+  if (!t) return;
+  if (toEl) return; // moving to another tooltip
+  hideTip(true);
 }, true);
 
   document.body.addEventListener('pointermove', (e) => {
