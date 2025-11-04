@@ -226,11 +226,15 @@
     showTip(t, tt.innerHTML);
   }, true);
 
-  document.body.addEventListener('pointerleave', (e) => {
-    const t = e.target.closest('.tooltip');
-    if (!t) return;
-    hideTip();
-  }, true);
+ document.body.addEventListener('pointerleave', (e) => {
+  const t = e.target.closest('.tooltip');
+  // Only hide if moving to something that's not another tooltip
+  const toEl = e.relatedTarget && e.relatedTarget.closest
+    ? e.relatedTarget.closest('.tooltip')
+    : null;
+  if (!t || toEl) return;
+  hideTip();
+}, true);
 
   document.body.addEventListener('pointermove', (e) => {
     if (!activeTarget) return;
