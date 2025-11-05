@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spirit Week | In The Middle</title>
+
+  <!-- Fonts and Styling -->
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0a0a0a;
+      color: #f1f1f1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 40px 20px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      color: #ffffff;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #b0b0b0;
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 800px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    article {
+      width: 100%;
+      max-width: 800px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      color: #e0e0e0;
+      text-align: left;
+    }
+
+    article h2 {
+      margin-top: 30px;
+      font-size: 1.5rem;
+      color: #ffffff;
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+    }
+
+    /* Fade-in on load */
+    body {
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    a {
+      color: #4ea8de;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    // Smooth fade-in when page loads
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Spirit Week</h1>
+    <p>By Liv, Alana, Peyton, and Sara. — [Edition Date]</p>
+  </header>
+
+  <img src="https://via.placeholder.com/800x400" alt="Article Image" class="article-image" />
+
+  <article>
+    <p>
+      Write your article here. Keep your text in paragraphs for readability.
+      You can use <strong>bold</strong> or <em>italics</em> to emphasize points.
+    </p>
+
+    <h2>Subheading Example</h2>
+    <p>
+      Continue your content here. If you want to add another image:
+    </p>
+    <img src="https://via.placeholder.com/700x300" alt="Supporting Image" class="article-image" />
+
+    <p>
+      Wrap up your article with a concluding paragraph or author note.
+    </p>
+  </article>
+
+  <footer>
+    <p><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1">← Back to Home</a></p>
+    <p>© In The Middle — All Rights Reserved</p>
+  </footer>
+</body>
+</html>
