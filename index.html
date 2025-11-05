@@ -111,13 +111,14 @@
         </p>
     </header>
 
-    <!-- Admin/Editor Mode Toggle Button (Visible in the embedded view for easy access) -->
-    <div class="text-center mb-6">
+    <!-- Admin/Editor Mode Toggle Button - CURRENTLY DISABLED -->
+    
+    <!-- <div class="text-center mb-6">
         <button onclick="toggleAdminMode()" id="admin-toggle-btn" 
                 class="bg-light-blue text-navy hover:bg-light-blue-100 font-semibold py-2 px-4 rounded-full text-sm transition-colors border-2 border-light-blue shadow-md">
             - WIP -
         </button>
-    </div>
+    </div> -->
 
     <!-- Admin/Editor Mode Interface (Hidden by Default) -->
     <div id="admin-editor-mode" class="hidden mb-10 p-6 border-4 border-light-blue rounded-xl bg-white max-w-7xl mx-auto">
@@ -263,7 +264,8 @@ document.body.addEventListener('pointerleave', (e) => {
     positionTipOverElement(activeTarget);
   });
 })();
-        // Default Section Data - COLLABORATORS WILL EDIT THIS BLOCK
+        // This section ctains all of the module areas, edit this per edition
+        // LAST EDIT- 2025F
         let articles = {
             news: {
                 title: "News & Features",
@@ -390,7 +392,7 @@ document.body.addEventListener('pointerleave', (e) => {
         </li>
                         <li>
             <span class="tooltip">Jazz Band
-                <span class="tooltiptext">An overview of the MS Jazz Band. Author <i>Leo Wang</i></span>
+                <span class="tooltiptext">An overview of the MS Jazz Band. Author: <i>Leo Wang</i></span>
             </span>
         </li>
                         <li>
