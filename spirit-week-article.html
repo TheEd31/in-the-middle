@@ -6,101 +6,64 @@
   <title>Spirit Week | In The Middle</title>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
-
-  * {
-    box-sizing: border-box;
+  /* Base styles */
+  body {
+    font-family: "Times New Roman", serif;
+    background: linear-gradient(135deg, #e6f0ff, #f5fbff);
+    color: #f7f9fb;
     margin: 0;
     padding: 0;
   }
 
-  body {
-    background-color: #f7f9fb; /* light blue */
-    color: #003366; /* dark blue text */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-    padding: 40px 20px;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-    font-family: "Times New Roman", Times, serif;
-  }
-
-  body.loaded {
-    opacity: 1;
-  }
-
-  header {
-    width: 100%;
-    max-width: 900px;
-    text-align: center;
-    margin-bottom: 40px;
+  h1, h2, h3 {
     font-family: "Merriweather", serif;
-  }
-
-  header h1 {
-    font-size: 2.2rem;
-    color: #002b80; /* deep blue title */
-    margin-bottom: 10px;
-  }
-
-  header p {
-    font-size: 1rem;
-    color: #0059b3; /* lighter blue subtitle */
-    font-family: "Times New Roman", Times, serif;
-  }
-
-  .article-card {
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 900px;
-    padding: 40px;
-    margin-bottom: 40px;
-    transition: transform 0.2s ease;
-  }
-
-  .article-card:hover {
-    transform: translateY(-3px);
-  }
-
-  .article-image {
-    width: 100%;
-    border-radius: 12px;
-    margin: 20px 0;
-  }
-
-  article {
-    line-height: 1.7;
-    font-size: 1.05rem;
-    color: #003366;
-    font-family: "Times New Roman", Times, serif;
-  }
-
-  article h2 {
-    margin-top: 30px;
-    font-size: 1.5rem;
-    color: #002b80;
-    font-family: "Merriweather", serif;
-  }
-
-  a {
-    color: #0059b3;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  footer {
-    margin-top: 40px;
-    font-size: 0.9rem;
-    color: #004080;
+    color: #1565c0;
     text-align: center;
-    font-family: "Times New Roman", Times, serif;
+  }
+
+  p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 1em auto;
+    color: #0d47a1;
+  }
+
+  img {
+    display: block;
+    margin: 20px auto;
+    max-width: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  /* Center content */
+  .content {
+    text-align: center;
+    padding: 2em;
+  }
+
+  /* Custom scrollbar (same as home page) */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #e6f0ff;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1565c0;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0d47a1;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    p {
+      width: 90%;
+      font-size: 1em;
+    }
   }
 </style>
 
