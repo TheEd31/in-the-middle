@@ -5,97 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Article Title | In The Middle</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Inter", Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap');
 
-    body {
-      background-color: #e6f2ff; /* light blue */
-      color: #003366; /* dark blue text */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      padding: 40px 20px;
-      opacity: 0;
-      transition: opacity 0.6s ease-in-out;
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    body.loaded {
-      opacity: 1;
-    }
+  body {
+    background-color: #e6f2ff; /* light blue */
+    color: #003366; /* dark blue text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+    font-family: "Times New Roman", Times, serif;
+  }
 
-    header {
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-      margin-bottom: 40px;
-    }
+  body.loaded {
+    opacity: 1;
+  }
 
-    header h1 {
-      font-size: 2.2rem;
-      color: #002b80; /* deep blue title */
-      margin-bottom: 10px;
-    }
+  header {
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: "Merriweather", serif;
+  }
 
-    header p {
-      font-size: 1rem;
-      color: #0059b3; /* lighter blue subtitle */
-    }
+  header h1 {
+    font-size: 2.2rem;
+    color: #002b80; /* deep blue title */
+    margin-bottom: 10px;
+  }
 
-    .article-card {
-      background-color: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 900px;
-      padding: 40px;
-      margin-bottom: 40px;
-      transition: transform 0.2s ease;
-    }
+  header p {
+    font-size: 1rem;
+    color: #0059b3; /* lighter blue subtitle */
+    font-family: "Times New Roman", Times, serif;
+  }
 
-    .article-card:hover {
-      transform: translateY(-3px);
-    }
+  .article-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    margin-bottom: 40px;
+    transition: transform 0.2s ease;
+  }
 
-    .article-image {
-      width: 100%;
-      border-radius: 12px;
-      margin: 20px 0;
-    }
+  .article-card:hover {
+    transform: translateY(-3px);
+  }
 
-    article {
-      line-height: 1.7;
-      font-size: 1.05rem;
-      color: #003366;
-    }
+  .article-image {
+    width: 100%;
+    border-radius: 12px;
+    margin: 20px 0;
+  }
 
-    article h2 {
-      margin-top: 30px;
-      font-size: 1.5rem;
-      color: #002b80;
-    }
+  article {
+    line-height: 1.7;
+    font-size: 1.05rem;
+    color: #003366;
+    font-family: "Times New Roman", Times, serif;
+  }
 
-    a {
-      color: #0059b3;
-      text-decoration: none;
-    }
+  article h2 {
+    margin-top: 30px;
+    font-size: 1.5rem;
+    color: #002b80;
+    font-family: "Merriweather", serif;
+  }
 
-    a:hover {
-      text-decoration: underline;
-    }
+  a {
+    color: #0059b3;
+    text-decoration: none;
+  }
 
-    footer {
-      margin-top: 40px;
-      font-size: 0.9rem;
-      color: #004080;
-      text-align: center;
-    }
-  </style>
+  a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #004080;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+  }
+</style>
 
   <script>
     window.addEventListener("load", () => {
