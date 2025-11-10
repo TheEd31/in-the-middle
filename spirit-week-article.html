@@ -4,105 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spirit Week | In The Middle</title>
-
-<style>
-  /* Base styles */
-  body {
-    font-family: "Times New Roman", serif;
-    background: linear-gradient(135deg, #e6f0ff, #f5fbff);
-    color: #f7f9fb;
-    margin: 0;
-    padding: 0;
-  }
-
-  h1, h2, h3 {
-    font-family: "Merriweather", serif;
-    color: #1565c0;
-    text-align: center;
-  }
-
-  p {
-    font-size: 1.1em;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 1em auto;
-    color: #0d47a1;
-  }
-
-  img {
-    display: block;
-    margin: 20px auto;
-    max-width: 90%;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  }
-
-  /* Center content */
-  .content {
-    text-align: center;
-    padding: 2em;
-  }
-
-  /* Custom scrollbar (same as home page) */
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #e6f0ff;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #1565c0;
-    border-radius: 5px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #0d47a1;
-  }
-
-  /* Responsive */
-  @media (max-width: 768px) {
-    p {
-      width: 90%;
-      font-size: 1em;
+  <style>
+    /* Base page style */
+    body {
+      font-family: "Times New Roman", serif;
+      background: linear-gradient(135deg, #e6f0ff, #f5fbff);
+      color: #0d47a1;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
     }
-  }
-</style>
 
-  <script>
-    window.addEventListener("load", () => {
-      document.body.classList.add("loaded");
-    });
-  </script>
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Article container */
+    .container {
+      max-width: 900px;
+      background: #ffffffcc;
+      margin: 3em auto;
+      padding: 3em 2em;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: "Merriweather", serif;
+      color: #1565c0;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.15em;
+      line-height: 1.7;
+      color: #0d47a1;
+      margin: 1em 0;
+    }
+
+    /* Image styling */
+    img {
+      display: block;
+      margin: 30px auto;
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 2px solid #90caf9;
+      margin: 2em auto;
+      width: 60%;
+    }
+
+    /* Links */
+    a {
+      color: #1976d2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #e6f0ff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1565c0;
+      border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0d47a1;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        margin: 1em;
+        padding: 1.5em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <header>
+  <div class="container">
     <h1>Spirit Week</h1>
-    <p>By Liv, Alana, Peyton, Sara — 10/13/2025</p>
-  </header>
-
-  <div class="article-card">
-    <img src="https://placehold.co/800x400?text=Placeholder" alt="Article Image" class="article-image" />
-
-    <article>
-      <p>
-       [Article Content]
-      </p>
-
-      <h2>Subheading (if necessary)</h2>
-      <p>
-        [article content 2]
-      </p>
-      <img src="https://placehold.co/700x300?text=Placeholder" alt="Supporting Image" class="article-image" />
-
-      <p>
-       Conclusion (if necessary)
-      </p>
-    </article>
+    <img src="spirit-week.jpg" alt="Students celebrating Spirit Week">
+    <p>
+      Spirit Week at our school was filled with excitement, creativity, and community pride. 
+      Each day brought a new theme, from Pajama Day to Class Color Day, and the halls were 
+      alive with laughter and school spirit.
+    </p>
+    <p>
+      Students competed in friendly contests, decorated hallways, and showcased their unique 
+      styles. The highlight of the week was the pep rally, where students and teachers joined 
+      together to celebrate school unity.
+    </p>
+    <hr>
+    <p>
+      Spirit Week reminded everyone that our school isn’t just a place for learning — 
+      it’s a community where students express themselves, cheer for one another, and 
+      build lasting memories.
+    </p>
+    <p style="text-align: center;">
+      <a href="home-page.html">← Back to Home</a>
+    </p>
   </div>
-
-  <footer>
-    <p><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1">← Back to Home</a></p>
-    <p>© In The Middle — All Rights Reserved</p>
-  </footer>
 </body>
 </html>
