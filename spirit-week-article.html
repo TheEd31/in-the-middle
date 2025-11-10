@@ -71,21 +71,11 @@
     a:hover {
       text-decoration: underline;
     }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #e6f0ff;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1565c0;
-      border-radius: 5px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #0d47a1;
-    }
+/* Scrollbar Custom */
+          ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f0f0; }
+        ::-webkit-scrollbar-thumb { background: var(--color-light-blue); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-navy); }
 
     /* Responsive */
     @media (max-width: 768px) {
