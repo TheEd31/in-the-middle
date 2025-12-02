@@ -425,7 +425,27 @@ document.body.addEventListener('pointerleave', (e) => {
                     </p>
                 `,
                 author: ""
-            }
+            },
+            archive: {
+    title: "Archive",
+    description: "View past issues of the newspaper.",
+    category: "Archive",
+    image: "https://example.com/archive-image.jpg",
+    content: `
+        <p class="text-lg font-bold text-navy mb-4">Past Issues</p>
+        <p class="mb-6">
+            You can browse all previous editions of the newspaper on our archive page.
+        </p>
+
+        <a 
+            href="/archive" 
+            class="text-light-blue underline font-semibold hover:text-navy"
+        >
+            Go to the full archive →
+        </a>
+    `,
+    author: ""
+}
         };
 
         const modal = document.getElementById('article-modal');
