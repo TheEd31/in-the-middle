@@ -1,98 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Archive</title>
+    <meta charset="UTF-8">
+    <title>Archive</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
-    body {
-      background: #e8f4ff;
-      font-family: "Times New Roman", serif;
-      color: #003366;
-      margin: 0;
-      padding: 40px;
-    }
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-    h1 {
-      font-family: "Merriweather", serif;
-      font-size: 2.6em;
-      text-align: center;
-      color: #0d47a1;
-      margin-bottom: 0.3em;
-    }
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e5e7eb;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
 
-    .subtitle {
-      font-family: "Merriweather", serif;
-      text-align: center;
-      color: #1976d2;
-      margin-bottom: 2em;
-      font-size: 1.2em;
-    }
-
-    .archive-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .card {
-      background: white;
-      padding: 18px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-    }
-
-    .card img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 12px;
-    }
-
-    .card-title {
-      font-family: "Merriweather", serif;
-      font-size: 1.35em;
-      color: #0d47a1;
-      margin-bottom: 6px;
-    }
-
-    .card-desc {
-      font-size: 0.95em;
-      line-height: 1.45;
-      color: #003366;
-    }
-  </style>
+        .text-navy { color: #1d3557; }
+        .text-light-blue { color: #457b9d; }
+        .border-navy { border-color: #1d3557; }
+    </style>
 </head>
 
-<body>
+<body class="bg-gray-100 min-h-screen">
 
-  <h1>Archive</h1>
-  <div class="subtitle">Browse past articles, issues, and features.</div>
+    <!-- Page container -->
+    <div class="max-w-5xl mx-auto py-10 px-4">
 
-  <div class="archive-grid">
+        <!-- Top Title -->
+        <h1 class="text-4xl font-bold text-navy mb-2">Archive</h1>
 
-    <!-- Example card — duplicate for each article -->
-    <a class="card" href="example.com" target="_blank">
-      <img src="example.com/temp-image.jpg" alt="">
-      <div class="card-title">Haverford/AIS Day</div>
-      <div class="card-desc">A full rundown about the events of AIS/Haverford Day and Weekend! (FALL 2025)</div>
-    </a>
+        <div class="w-full h-1 bg-navy mb-10"></div>
 
-    <!-- Copy + edit this structure for each article -->
+        <!-- ===== ISSUE 1 ===== -->
+        <section class="mb-12">
 
-  </div>
+            <!-- Issue card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+                <img src="https://via.placeholder.com/1000x400"
+                     class="w-full h-56 object-cover">
+
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-navy mb-1">Issue Title (Month Year)</h2>
+                    <p class="text-gray-600 mb-4">Short description of this issue goes here.</p>
+
+                    <a href="issue1.html" class="text-light-blue underline font-semibold hover:text-navy">
+                        View Full Issue →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Divider line -->
+            <div class="border-t-2 border-navy mb-6"></div>
+
+            <!-- Article list -->
+            <div class="space-y-4 pl-2">
+                <h3 class="text-xl font-semibold text-navy mb-2">Articles in this Issue</h3>
+
+                <ul class="space-y-3">
+                    <li>
+                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
+                            Article Title 1
+                        </a>
+                        <span class="text-gray-600 text-sm ml-2">by Author Name</span>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
+                            Article Title 2
+                        </a>
+                        <span class="text-gray-600 text-sm ml-2">by Author Name</span>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
+                            Article Title 3
+                        </a>
+                        <span class="text-gray-600 text-sm ml-2">by Author Name</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+
+        <!-- ===== ISSUE 2 ===== -->
+        <section class="mb-12">
+
+            <!-- Issue card -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
+                <img src="https://via.placeholder.com/1000x400"
+                     class="w-full h-56 object-cover">
+
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-navy mb-1">Issue Title (Month Year)</h2>
+                    <p class="text-gray-600 mb-4">Short description of this issue goes here.</p>
+
+                    <a href="issue2.html" class="text-light-blue underline font-semibold hover:text-navy">
+                        View Full Issue →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t-2 border-navy mb-6"></div>
+
+            <!-- Article list -->
+            <div class="space-y-4 pl-2">
+                <h3 class="text-xl font-semibold text-navy mb-2">Articles in this Issue</h3>
+
+                <ul class="space-y-3">
+                    <li>
+                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
+                            Article Title A
+                        </a>
+                        <span class="text-gray-600 text-sm ml-2">by Author</span>
+                    </li>
+
+                    <li>
+                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
+                            Article Title B
+                        </a>
+                        <span class="text-gray-600 text-sm ml-2">by Author</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Extra spacing -->
+        <div class="h-20"></div>
+
+    </div>
 
 </body>
 </html>
