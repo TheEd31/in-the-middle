@@ -1,146 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Archive</title>
-<h2>{WIP)</h2>
-    <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<title>Archive</title>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #e5e7eb;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #94a3b8;
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-        }
+<style>
+:root {
+    --navy: #0F1C3F;
+    --light-blue: #4FA3FF;
+    --bg: #EAF3FF;
+}
 
-        .text-navy { color: #1d3557; }
-        .text-light-blue { color: #457b9d; }
-        .border-navy { border-color: #1d3557; }
-    </style>
+body {
+    margin: 0;
+    background: var(--bg);
+    font-family: "Times New Roman", serif;
+    color: var(--navy);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #dbe8ff;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--navy);
+    border-radius: 10px;
+}
+
+/* Page layout */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-family: "Merriweather", serif;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.divider {
+    height: 2px;
+    background: var(--navy);
+    opacity: 0.15;
+    margin: 24px 0;
+}
+
+/* Issue cards */
+.issue {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.issue h2 {
+    font-family: "Merriweather", serif;
+    margin: 0 0 8px;
+}
+
+.issue p {
+    margin: 0 0 12px;
+}
+
+.issue button {
+    background: none;
+    border: none;
+    color: var(--light-blue);
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.issue button:hover {
+    color: var(--navy);
+}
+
+/* Overlay */
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    z-index: 100;
+}
+
+/* PDF Viewer */
+#pdfViewer {
+    position: fixed;
+    left: 50%;
+    bottom: -100%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1000px;
+    background: var(--bg);
+    border-radius: 18px 18px 0 0;
+    padding: 16px;
+    z-index: 101;
+    transition: bottom 0.4s ease;
+}
+
+#pdfViewer.active {
+    bottom: 0;
+}
+
+.viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.viewer-header span {
+    font-family: "Merriweather", serif;
+    font-size: 18px;
+}
+
+.viewer-header button {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+iframe {
+    width: 100%;
+    height: 80vh;
+    border: none;
+    border-radius: 12px;
+}
+</style>
 </head>
 
-<body class="bg-gray-100 min-h-screen">
+<body>
 
-    <!-- Page container -->
-    <div class="max-w-5xl mx-auto py-10 px-4">
+<div class="container">
+    <h1>Archive</h1>
+    <p>Browse previous issues of the newspaper.</p>
 
-        <!-- Top Title -->
-        <h1 class="text-4xl font-bold text-navy mb-2">Archive</h1>
+    <div class="divider"></div>
 
-        <div class="w-full h-1 bg-navy mb-10"></div>
-
-        <!-- ===== ISSUE 1 ===== -->
-        <section class="mb-12">
-
-            <!-- Issue card -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
-                <img src="https://via.placeholder.com/1000x400"
-                     class="w-full h-56 object-cover">
-
-                <div class="p-6">
-                    <h2 class="text-2xl font-bold text-navy mb-1">Fall 2025 Issue (11/2025)</h2>
-                    <p class="text-gray-600 mb-4">Fall Edition (1st Issue) of ITM in the 25-26 year.</p>
-
-                    <a href="https://drive.google.com/file/d/1cjfBPSunXfOYk93CLOhfkrnsHFZwVOmZ/preview" class="text-light-blue underline font-semibold hover:text-navy">
-                        View Full Issue →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Divider line -->
-            <div class="border-t-2 border-navy mb-6"></div>
-
-            <!-- Article list -->
-            <div class="space-y-4 pl-2">
-                <h3 class="text-xl font-semibold text-navy mb-2">Articles in this Issue</h3>
-
-                <ul class="space-y-3">
-                    <li>
-                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
-                            Article Title 1
-                        </a>
-                        <span class="text-gray-600 text-sm ml-2">by Author Name</span>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
-                            Article Title 2
-                        </a>
-                        <span class="text-gray-600 text-sm ml-2">by Author Name</span>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
-                            Article Title 3
-                        </a>
-                        <span class="text-gray-600 text-sm ml-2">by Author Name</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-
-
-        <!-- ===== ISSUE 2 ===== -->
-        <section class="mb-12">
-
-            <!-- Issue card -->
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
-                <img src="https://via.placeholder.com/1000x400"
-                     class="w-full h-56 object-cover">
-
-                <div class="p-6">
-                    <h2 class="text-2xl font-bold text-navy mb-1">Issue Title (Month Year)</h2>
-                    <p class="text-gray-600 mb-4">Short description of this issue goes here.</p>
-
-                    <a href="issue2.html" class="text-light-blue underline font-semibold hover:text-navy">
-                        View Full Issue →
-                    </a>
-                </div>
-            </div>
-
-            <!-- Divider -->
-            <div class="border-t-2 border-navy mb-6"></div>
-
-            <!-- Article list -->
-            <div class="space-y-4 pl-2">
-                <h3 class="text-xl font-semibold text-navy mb-2">Articles in this Issue</h3>
-
-                <ul class="space-y-3">
-                    <li>
-                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
-                            Article Title A
-                        </a>
-                        <span class="text-gray-600 text-sm ml-2">by Author</span>
-                    </li>
-
-                    <li>
-                        <a href="#" class="text-light-blue hover:text-navy font-medium underline">
-                            Article Title B
-                        </a>
-                        <span class="text-gray-600 text-sm ml-2">by Author</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- Extra spacing -->
-        <div class="h-20"></div>
-
+    <!-- ISSUE BLOCK -->
+    <div class="issue">
+        <h2>Fall 2025 Edition</h2>
+        <p>The Fall 2025 Edition of ITM.</p>
+        <button onclick="openPDF('https://drive.google.com/file/d/1cjfBPSunXfOYk93CLOhfkrnsHFZwVOmZ/preview')">
+            Go to Edition →
+        </button>
     </div>
+
+    <!-- ADD MORE ISSUES BELOW -->
+</div>
+
+<!-- Overlay -->
+<div id="overlay" onclick="closePDF()"></div>
+
+<!-- PDF Viewer -->
+<div id="pdfViewer">
+    <div class="viewer-header">
+        <span>Full Edition</span>
+        <button onclick="closePDF()">✕ Close</button>
+    </div>
+
+    <iframe id="pdfFrame"></iframe>
+</div>
+
+<script>
+function openPDF(url) {
+    document.getElementById("pdfFrame").src = url;
+    document.getElementById("overlay").style.display = "block";
+    document.getElementById("pdfViewer").classList.add("active");
+}
+
+function closePDF() {
+    document.getElementById("pdfFrame").src = "";
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("pdfViewer").classList.remove("active");
+}
+</script>
 
 </body>
 </html>
