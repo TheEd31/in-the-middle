@@ -158,25 +158,52 @@ header p { font-family: var(--font-secondary); color: #333; }
 <script>
 let articles = {
     news: {
-        title:"News & Features",
-        description:"The section with all of the latest campus news! Includes policy changes, student activity, trips, and more!",
-        category:"Section",
-        image:"https://www.phillymag.com/wp-content/uploads/sites/57/2024/09/Campus-Green-Chapel-Crowds-ps.jpg",
-        content:`<p class="mb-4">This is the <strong>News & Features</strong> section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life. The council corner is also hosted here, where all of the latest StuCo activities are posted!</p>
-                    <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>
-            <span class="tooltip"><u><strong><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/chapel-council-corner?authuser=0" target="_blank" class="article-title">Chapel Council Corner</a></strong></u>
-                <span class="tooltiptext">Recent news from ChapCo! Authors: <i>Ellen Le ('30)</i></span>
-            </span>
-        </li>
-                       <li>
-            <span class="tooltip"><u><strong><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/student-council-corner?authuser=0" target="_blank" class="article-title">Student Council Corner</a></strong></u>
-                <span class="tooltiptext">The hottest news from the Student Council! Author: <i>Gus Ebmeyer ('30)</i></span>
-            </span>
-        </li>
-        author:""`
-    },
+    title: "News & Features",
+    description: "The section with all of the latest campus news! Includes policy changes, student activity, trips, and more!",
+    category: "Section",
+    image: "https://www.phillymag.com/wp-content/uploads/sites/57/2024/09/Campus-Green-Chapel-Crowds-ps.jpg",
+    content: `
+        <p class="mb-4">
+            This is the <strong>News & Features</strong> section. Here, we cover major school announcements, student achievements,
+            and deep-dive features into campus life. The council corner is also hosted here, where all of the latest StuCo activities are posted!
+        </p>
+
+        <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
+
+        <ul class="list-disc pl-5 space-y-1">
+            <li>
+                <span class="tooltip">
+                    <u><strong>
+                        <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/chapel-council-corner?authuser=0"
+                           target="_blank"
+                           class="article-title">
+                           Chapel Council Corner
+                        </a>
+                    </strong></u>
+                    <span class="tooltiptext">
+                        Recent news from ChapCo! Authors: <i>Ellen Le ('30)</i>
+                    </span>
+                </span>
+            </li>
+
+            <li>
+                <span class="tooltip">
+                    <u><strong>
+                        <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/student-council-corner?authuser=0"
+                           target="_blank"
+                           class="article-title">
+                           Student Council Corner
+                        </a>
+                    </strong></u>
+                    <span class="tooltiptext">
+                        The hottest news from the Student Council! Author: <i>Gus Ebmeyer ('30)</i>
+                    </span>
+                </span>
+            </li>
+        </ul>
+    `,
+    author: ""
+},
     opinion: {
         title:"Fun & Games",
         description:"The place for puzzles, riddles, polls, and more!",
