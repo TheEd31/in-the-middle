@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In The Middle - Middle School Newspaper Homepage</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-navy: #0B3D91;       /* Dark Blue */
+            --color-red: #C0392B;        /* Christmas Red */
+            --color-green: #27AE60;      /* Christmas Green */
+            --color-light-red: #F1948A;  
+            --color-light-green: #82E0AA;
+            --font-primary: 'Merriweather', serif;
+            --font-secondary: 'Open Sans', sans-serif;
+        }
+        .text-navy { color: var(--color-navy); }
+        .bg-navy { background-color: var(--color-navy); }
+        .text-red { color: var(--color-red); }
+        .text-green { color: var(--color-green); }
+        .bg-red { background-color: var(--color-red); }
+        .bg-green { background-color: var(--color-green); }
+        .border-red { border-color: var(--color-red); }
+        .border-green { border-color: var(--color-green); }
+        .hover\:bg-red-100:hover { background-color: rgba(193, 57, 43, 0.1); }
+        .hover\:bg-green-100:hover { background-color: rgba(39, 174, 96, 0.1); }
+        .font-primary { font-family: var(--font-primary); }
+        .font-secondary { font-family: var(--font-secondary); }
+
+        body {
+            background: linear-gradient(180deg, #FFF8F0 0%, #E9F7EF 100%);
+            font-family: var(--font-secondary);
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f0f0f0; }
+        ::-webkit-scrollbar-thumb { background: var(--color-red); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-green); }
+
+        .article-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 2px solid transparent;
+        }
+        .article-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.15);
+            border-color: var(--color-red);
+        }
+
+        .modal-overlay {
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.75);
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            max-height: 90vh;
+            max-width: 95vw;
+            width: 800px;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border-radius: 16px;
+            background-color: #fff;
+        }
+
+        .tooltip-floating {
+            position: fixed;
+            background-color: var(--color-red);
+            color: #fff;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            line-height: 1.2;
+            z-index: 99999;
+            pointer-events: none;
+            max-width: 320px;
+            text-align: left;
+            transform: translate(-50%, -100%) scale(0.98);
+            opacity: 0;
+            transition: opacity 0.18s ease, transform 0.18s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+        }
+
+        .tooltip-floating.visible {
+            opacity: 1;
+            transform: translate(-50%, -120%) scale(1);
+        }
+
+        .tooltip-floating::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--color-red) transparent transparent transparent;
+        }
+
+        .homepage-subtitle {
+            font-family: "Times New Roman", serif;
+            font-size: 1.15em;
+            color: var(--color-red);
+            text-align: center;
+            margin-top: -0.3em;
+            margin-bottom: 1.8em;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.45;
+        }
+    </style>
+</head>
+<body class="antialiased p-4 sm:p-8">
+
+<header class="mb-8 border-b-4 border-red pb-4 text-center">
+    <h1 class="text-4xl sm:text-6xl font-black font-primary text-red tracking-tight">
+        In The Middle
+    </h1>
+    <p class="homepage-subtitle">
+        The Episcopal Academy MS Holiday Edition
+    </p>
+</header>
+
+<main id="article-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center mx-auto max-w-7xl">
+    <p id="loading-message" class="col-span-full text-center text-gray-500">Loading articles...</p>
+</main>
+
+<div id="article-modal" class="modal-overlay fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-opacity">
+    <div class="modal-content p-6 overflow-y-auto">
+        <div class="flex justify-between items-start border-b border-red pb-3 mb-4 sticky top-0 bg-white">
+            <h3 id="modal-title" class="text-2xl font-primary font-extrabold text-red"></h3>
+            <button onclick="closeModal()" class="text-red hover:text-green transition-colors p-1 -mt-1 -mr-1 rounded-full hover:bg-gray-100" aria-label="Close section info">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div id="modal-content-body" class="text-gray-800 font-secondary leading-relaxed text-base"></div>
+        <div class="mt-6 pt-4 border-t border-gray-200">
+             <p class="text-sm text-gray-600 font-semibold">Hover over an article to preview it. Click on it to navigate directly to the article.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+  const floatTip = document.createElement('div');
+  floatTip.className = 'tooltip-floating';
+  document.body.appendChild(floatTip);
+  let activeTarget = null;
+  let hideTimeout = null;
+  function showTip(target, html) {
+    floatTip.classList.add('visible');
+    clearTimeout(hideTimeout);
+    if (!html) return;
+    activeTarget = target;
+    floatTip.innerHTML = html;
+    positionTipOverElement(target);
+  }
+  function hideTip(withDelay = true) {
+    activeTarget = null;
+    const doHide = () => {
+      floatTip.classList.remove('visible');
+      floatTip.style.transform = 'translate(-50%, -100%) scale(0.98)';
+      floatTip.style.opacity = '0';
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => { floatTip.innerHTML = ''; }, 220);
+    };
+    if (withDelay) { clearTimeout(hideTimeout); hideTimeout = setTimeout(doHide, 120); } else { doHide(); }
+  }
+  function positionTipOverElement(target) {
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    let y = rect.top - 10;
+    if (y - 60 < 0) y = rect.bottom + 10;
+    floatTip.style.left = `${x}px`;
+    floatTip.style.top = `${y}px`;
+  }
+  window.addEventListener('scroll', () => { if (activeTarget) positionTipOverElement(activeTarget); }, { passive: true });
+  window.addEventListener('resize', () => { if (activeTarget) positionTipOverElement(activeTarget); });
+  document.body.addEventListener('pointerenter', (e) => {
+    const t = e.target.closest('.tooltip');
+    if (!t) return;
+    const tt = t.querySelector('.tooltiptext');
+    if (!tt) return;
+    showTip(t, tt.innerHTML);
+  }, true);
+  document.body.addEventListener('pointerleave', (e) => {
+    const t = e.target.closest('.tooltip');
+    const toEl = e.relatedTarget && e.relatedTarget.closest ? e.relatedTarget.closest('.tooltip') : null;
+    if (!t) return;
+    if (toEl) return;
+    hideTip(true);
+  }, true);
+  document.body.addEventListener('pointermove', (e) => { if (!activeTarget) return; positionTipOverElement(activeTarget); });
+})();
+
+let articles = {
+    news: { title: "News & Features", description: "The section with all of the latest campus news! Includes policy changes, student activity, trips, and more!", category: "Section", image: "https://www.phillymag.com/wp-content/uploads/sites/57/2024/09/Campus-Green-Chapel-Crowds-ps.jpg", content: `<p class="mb-4">This is the <strong>News & Features</strong> section. Here, we cover major school announcements, student achievements, and deep-dive features into campus life. The council corner is also hosted here, where all of the latest StuCo activities are posted!</p>` , author:""},
+    opinion: { title:"Fun & Games", description:"Puzzles and fun stuff!", category:"Section", image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/CrosswordUSA.svg/1200px-CrosswordUSA.svg.png", content:`<p class="mb-4">Fun section content here.</p>`, author:""},
+    athletics: { title:"Sports & Athletics", description:"Scores and team highlights.", category:"Section", image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664955/episcopalacademypa/m2tmbt97ckopdavsuhx2/athlanding1.jpg", content:`<p class="mb-4">Sports section content here.</p>`, author:""},
+    arts: { title:"Arts & Culture", description:"Creative student work.", category:"Section", image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664950/episcopalacademypa/c19kays4aib1z3aoljip/artscccg.jpg", content:`<p class="mb-4">Arts section content here.</p>`, author:""},
+    join: { title:"Join the Staff!", description:"Get involved!", category:"Opportunity", image:"https://lh3.google.com/u/0/d/1C-eS_ieobBY6dsFGnCO2dQDVXAFrx2_Q=w3270-h1824-iv1?auditContext=thumbnail&auditContext=forDisplay", content:`<p class="mb-4">Join content here.</p>`, author:""},
+    archive: { title:"Archive", description:"View past issues.", category:"Archive", image:"https://example.com/archive-image.jpg", content:`<p class="mb-4">Go to archive page.</p>`, author:""}
+};
+
+const articleGrid = document.getElementById('article-grid');
+const modal = document.getElementById('article-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalBody = document.getElementById('modal-content-body');
+const body = document.body;
+
+function loadArticles() {
+    articleGrid.innerHTML = '';
+    for (const key in articles) {
+        const section = articles[key];
+        const cardHtml = `<div class="article-card bg-white rounded-xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('${key}')">
+            <img class="w-full h-48 object-cover object-center" src="${section.image}" alt="${section.title}">
+            <div class="p-6">
+                <p class="text-xs font-semibold uppercase text-red mb-1">${section.category}</p>
+                <h2 class="text-xl font-primary font-extrabold text-red leading-snug">${section.title}</h2>
+                <p class="text-gray-700 mt-3 line-clamp-3 font-secondary text-sm">${section.description}</p>
+            </div>
+        </div>`;
+        articleGrid.insertAdjacentHTML('beforeend', cardHtml);
+    }
+    document.getElementById('loading-message').classList.add('hidden');
+}
+
+function openModal(articleKey) {
+    const article = articles[articleKey];
+    if (!article) return;
+    modalTitle.innerHTML = `<span class="text-sm font-semibold uppercase text-red block">${article.category}</span>${article.title}`;
+    modalBody.innerHTML = article.content;
+    if (article.author) modalBody.innerHTML += `<p class="mt-6 text-right font-semibold text-sm italic">— By ${article.author}</p>`;
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    modal.classList.add('opacity-0', 'pointer-events-none');
+    body.style.overflow = '';
+}
+
+modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
+document.addEventListener('keydown', e => { if(e.key==='Escape' && !modal.classList.contains('opacity-0')) closeModal(); });
+
+window.onload = loadArticles;
+</script>
+</body>
+</html>
