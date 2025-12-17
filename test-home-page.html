@@ -3,33 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>In The Middle - Middle School Newspaper Homepage</title>
+<title>In The Middle - Holiday Edition</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
     --color-navy: #003057;
     --color-light-blue: #9BCBEB;
-    --color-red: #FF3B3F; /* Brighter red */
-    --color-green: #28A745; /* Added green */
+    --color-red: #FF4B4B;       /* Brighter red */
+    --color-green: #28A745;     /* Distinct green */
     --font-primary: 'Merriweather', serif;
     --font-secondary: 'Open Sans', sans-serif;
 }
-
 body {
-    background: url('https://i.ibb.co/ZgZqJYH/christmas-bg.jpg') no-repeat center center fixed;
-    background-size: cover;
     font-family: var(--font-secondary);
+    background-color: #F0F8FF; /* light blue holiday feel */
 }
-
-/* Text & Color Utilities */
-.text-navy { color: var(--color-navy); }
-.text-light-blue { color: var(--color-light-blue); }
-.text-red { color: var(--color-red); }
-.text-green { color: var(--color-green); }
-
-.font-primary { font-family: var(--font-primary); }
-.font-secondary { font-family: var(--font-secondary); }
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
@@ -37,105 +26,240 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--color-light-blue); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-navy); }
 
-/* Article Cards */
+/* Header */
+header h1 { font-family: var(--font-primary); color: var(--color-navy); }
+header p { font-family: var(--font-secondary); color: #333; }
+
+/* Article cards */
 .article-card {
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
     transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
 }
 .article-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2), 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2);
 }
 
-/* Alternating Red & Green Cards */
-.article-card.red { background-color: rgba(255,59,63,0.1); border-left: 4px solid var(--color-red); }
-.article-card.green { background-color: rgba(40,167,69,0.1); border-left: 4px solid var(--color-green); }
+/* Alternating red/green */
+.article-card.red { background-color: rgba(255,75,75,0.15); }
+.article-card.green { background-color: rgba(40,167,69,0.15); }
 
-/* Header */
-header { text-align: center; margin-bottom: 2rem; color: var(--color-navy); }
-.homepage-subtitle { font-family: "Times New Roman", serif; font-size: 1.15em; color: #0d47a1; margin-top: -0.3em; margin-bottom: 1.8em; }
+/* Card content */
+.article-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    flex-shrink: 0;
+}
+.article-card .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.article-card .category { font-size: 0.75rem; text-transform: uppercase; color: var(--color-light-blue); font-weight: 600; margin-bottom: 0.25rem; }
+.article-card .title { font-family: var(--font-primary); font-weight: 900; font-size: 1.25rem; color: var(--color-navy); line-height: 1.2; }
+.article-card .description { font-family: var(--font-secondary); color: #333; font-size: 0.875rem; margin-top: 0.5rem; }
 
-/* Modal & Tooltip */
-.modal-overlay { z-index: 1000; background-color: rgba(0,0,0,0.75); transition: opacity 0.3s ease; }
-.modal-content { max-height: 90vh; max-width: 95vw; width: 800px; box-shadow: 0 25px 50px rgba(0,0,0,0.5); }
-.tooltip-floating { position: fixed; background-color: var(--color-navy); color: #fff; padding: 8px 10px; border-radius: 8px; font-size: 0.9rem; z-index: 99999; pointer-events: none; max-width: 320px; text-align: left; transform: translate(-50%, -100%) scale(0.98); opacity: 0; transition: opacity 0.18s ease, transform 0.18s ease; }
-.tooltip-floating.visible { opacity: 1; transform: translate(-50%, -120%) scale(1); }
-.tooltip-floating::after { content: ""; position: absolute; left: 50%; transform: translateX(-50%); bottom: -6px; border-width: 6px; border-style: solid; border-color: var(--color-navy) transparent transparent transparent; }
+/* Modal */
+.modal-overlay {
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.75);
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+.modal-overlay.active { opacity: 1; pointer-events: all; }
+.modal-content {
+    background: #fff;
+    border-radius: 1rem;
+    max-width: 90vw;
+    max-height: 90vh;
+    padding: 1.5rem;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+}
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    position: sticky;
+    top: 0;
+    background: #fff;
+}
+.modal-header h3 { font-family: var(--font-primary); font-weight: 900; color: var(--color-navy); font-size: 1.5rem; }
+.modal-body { font-family: var(--font-secondary); color: #333; line-height: 1.5; font-size: 0.95rem; }
+.modal-close { background: none; border: none; cursor: pointer; }
 
+.tooltip-floating {
+    position: fixed; background-color: var(--color-navy); color: #fff;
+    padding: 8px 10px; border-radius: 8px; font-size: 0.9rem; line-height:1.2;
+    z-index: 99999; pointer-events: none; max-width: 320px; text-align:left;
+    transform: translate(-50%, -100%) scale(0.98); opacity: 0;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+}
+.tooltip-floating.visible { opacity:1; transform: translate(-50%, -120%) scale(1); }
+.tooltip-floating::after {
+    content:""; position:absolute; left:50%; transform: translateX(-50%); bottom:-6px;
+    border-width:6px; border-style:solid; border-color: var(--color-navy) transparent transparent transparent;
+}
 </style>
 </head>
-<body class="antialiased p-4 sm:p-8">
+<body class="p-6">
 
-<header class="mb-8 border-b-4 border-navy pb-4">
-    <h1 class="text-4xl sm:text-6xl font-black font-primary">In The Middle</h1>
-    <p class="homepage-subtitle">The Episcopal Academy MS Newspaper - Holiday Edition</p>
+<header class="mb-8 text-center">
+    <h1 class="text-4xl sm:text-6xl font-black">In The Middle</h1>
+    <p class="text-xl sm:text-2xl mt-2">Holiday Edition - The Episcopal Academy MS Newspaper</p>
 </header>
 
 <main id="article-grid" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
     <p id="loading-message" class="col-span-full text-center text-gray-500">Loading articles...</p>
 </main>
 
-<div id="article-modal" class="modal-overlay fixed inset-0 flex items-center justify-center opacity-0 pointer-events-none transition-opacity">
-    <div class="modal-content bg-white rounded-xl shadow-2xl p-6 overflow-y-auto">
-        <div class="flex justify-between items-start border-b border-light-blue pb-3 mb-4 sticky top-0 bg-white">
-            <h3 id="modal-title" class="text-2xl font-primary font-extrabold text-navy"></h3>
-            <button onclick="closeModal()" class="text-navy hover:text-red-500 p-1 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
-            </button>
+<!-- Modal -->
+<div id="article-modal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title"></h3>
+            <button class="modal-close" onclick="closeModal()">&times;</button>
         </div>
-        <div id="modal-content-body" class="text-gray-800 font-secondary leading-relaxed text-base"></div>
+        <div id="modal-body" class="modal-body"></div>
     </div>
 </div>
 
 <script>
 let articles = {
-    news: {title:"News & Features", description:"Campus news, trips, policy changes", category:"Section", image:"https://www.phillymag.com/wp-content/uploads/sites/57/2024/09/Campus-Green-Chapel-Crowds-ps.jpg", content:"<p>News content here</p>", author:""},
-    opinion: {title:"Fun & Games", description:"Puzzles and interactive fun", category:"Section", image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/CrosswordUSA.svg/1200px-CrosswordUSA.svg.png", content:"<p>Puzzles content here</p>", author:""},
-    athletics: {title:"Sports & Athletics", description:"Scores and team highlights", category:"Section", image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664955/episcopalacademypa/m2tmbt97ckopdavsuhx2/athlanding1.jpg", content:"<p>Sports content here</p>", author:""},
-    arts: {title:"Arts & Culture", description:"Arts and performances", category:"Section", image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664950/episcopalacademypa/c19kays4aib1z3aoljip/artscccg.jpg", content:"<p>Arts content here</p>", author:""},
-    join: {title:"Join the Staff!", description:"Get involved with writing or photography", category:"Opportunity", image:"https://lh3.google.com/u/0/d/1C-eS_ieobBY6dsFGnCO2dQDVXAFrx2_Q=w3270-h1824-iv1?auditContext=thumbnail&auditContext=forDisplay", content:"<p>Join info here</p>", author:""}
+    news: {
+        title:"News & Features",
+        description:"All the latest campus news and holiday events!",
+        category:"Section",
+        image:"https://www.phillymag.com/wp-content/uploads/sites/57/2024/09/Campus-Green-Chapel-Crowds-ps.jpg",
+        content:`<p>Holiday news coverage and school highlights.</p>`,
+        author:""
+    },
+    opinion: {
+        title:"Fun & Games",
+        description:"Holiday puzzles, word searches, and more!",
+        category:"Section",
+        image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/CrosswordUSA.svg/1200px-CrosswordUSA.svg.png",
+        content:`<p>Enjoy holiday-themed puzzles!</p>`,
+        author:""
+    },
+    athletics: {
+        title:"Sports & Athletics",
+        description:"Seasonal sports and holiday tournaments.",
+        category:"Section",
+        image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664955/episcopalacademypa/m2tmbt97ckopdavsuhx2/athlanding1.jpg",
+        content:`<p>Sports recaps with holiday spirit.</p>`,
+        author:""
+    },
+    arts: {
+        title:"Arts & Culture",
+        description:"Holiday performances, art shows, and student work.",
+        category:"Section",
+        image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664950/episcopalacademypa/c19kays4aib1z3aoljip/artscccg.jpg",
+        content:`<p>Celebrate holiday arts!</p>`,
+        author:""
+    }
 };
 
 const articleGrid = document.getElementById('article-grid');
 const modal = document.getElementById('article-modal');
 const modalTitle = document.getElementById('modal-title');
-const modalBody = document.getElementById('modal-content-body');
+const modalBody = document.getElementById('modal-body');
 
 function loadArticles() {
     articleGrid.innerHTML = '';
-    let i=0;
-    for (const key in articles) {
-        const article = articles[key];
-        const colorClass = (i%2===0) ? 'red' : 'green';
-        const cardHtml = `
-        <div class="article-card ${colorClass} rounded-xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('${key}')">
-            <img class="w-full h-48 object-cover" src="${article.image}" alt="${article.title}" onerror="this.src='https://placehold.co/600x400/f0f0f0/666666?text=NO+IMAGE';">
-            <div class="p-6">
-                <p class="text-xs font-semibold uppercase mb-1">${article.category}</p>
-                <h2 class="text-xl font-primary font-extrabold text-navy">${article.title}</h2>
-                <p class="text-gray-700 mt-2 line-clamp-3 font-secondary text-sm">${article.description}</p>
-            </div>
-        </div>`;
-        articleGrid.insertAdjacentHTML('beforeend', cardHtml);
-        i++;
+    let i = 0;
+    for(const key in articles){
+        if(articles.hasOwnProperty(key)){
+            const section = articles[key];
+            const colorClass = i%2===0 ? 'red' : 'green';
+            const card = document.createElement('div');
+            card.className = `article-card ${colorClass}`;
+            card.onclick = ()=>openModal(key);
+
+            const img = document.createElement('img');
+            img.src = section.image || 'https://placehold.co/600x400/f0f0f0/666666?text=NO+IMAGE';
+            img.alt = section.title;
+            card.appendChild(img);
+
+            const bodyDiv = document.createElement('div');
+            bodyDiv.className='card-body';
+            bodyDiv.innerHTML = `
+                <p class="category">${section.category}</p>
+                <h2 class="title">${section.title}</h2>
+                <p class="description">${section.description}</p>
+            `;
+            card.appendChild(bodyDiv);
+            articleGrid.appendChild(card);
+            i++;
+        }
     }
 }
-function openModal(key) {
-    const a = articles[key];
-    modalTitle.innerHTML = `<span class="text-xs font-semibold uppercase text-light-blue block">${a.category}</span>${a.title}`;
-    modalBody.innerHTML = a.content;
-    modal.classList.remove('opacity-0','pointer-events-none'); modal.classList.add('opacity-100');
-    document.body.style.overflow = 'hidden';
+
+function openModal(key){
+    const section = articles[key];
+    if(!section) return;
+    modalTitle.innerHTML = `<span class="category">${section.category}</span> ${section.title}`;
+    modalBody.innerHTML = section.content;
+    modal.classList.add('active');
+    document.body.style.overflow='hidden';
 }
-function closeModal() {
-    modal.classList.remove('opacity-100'); modal.classList.add('opacity-0','pointer-events-none');
-    document.body.style.overflow = '';
+
+function closeModal(){
+    modal.classList.remove('active');
+    document.body.style.overflow='';
 }
 
 window.onload = loadArticles;
-modal.addEventListener('click', e => { if(e.target===modal) closeModal(); });
-document.addEventListener('keydown', e=>{ if(e.key==='Escape' && modal.classList.contains('opacity-100')) closeModal(); });
+
+// Tooltip floating
+(function() {
+    const floatTip = document.createElement('div');
+    floatTip.className='tooltip-floating';
+    document.body.appendChild(floatTip);
+    let activeTarget=null, hideTimeout=null;
+    function showTip(target, html){
+        floatTip.classList.add('visible');
+        clearTimeout(hideTimeout);
+        activeTarget = target;
+        floatTip.innerHTML = html;
+        positionTip(target);
+    }
+    function hideTip(){
+        floatTip.classList.remove('visible');
+        activeTarget=null;
+    }
+    function positionTip(target){
+        const rect = target.getBoundingClientRect();
+        floatTip.style.left=`${rect.left+rect.width/2}px`;
+        floatTip.style.top=`${rect.top-10}px`;
+    }
+    document.body.addEventListener('pointerenter', e=>{
+        const t = e.target.closest('.tooltip');
+        if(!t) return;
+        const tt = t.querySelector('.tooltiptext');
+        if(!tt) return;
+        showTip(t, tt.innerHTML);
+    },true);
+    document.body.addEventListener('pointerleave', e=>hideTip(),true);
+})();
 </script>
 </body>
 </html>
