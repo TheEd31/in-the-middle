@@ -164,8 +164,8 @@ let articles = {
     image: "https://www.phillymag.com/wp-content/uploads/sites/57/2024/09/Campus-Green-Chapel-Crowds-ps.jpg",
     content: `
         <p class="mb-4">
-            This is the <strong>News & Features</strong> section. Here, we cover major school announcements, student achievements,
-            and deep-dive features into campus life. The council corner is also hosted here, where all of the latest StuCo activities are posted!
+            This is the <strong>News & Features</strong> section. Here, we cover major school announcements,
+            student achievements, and deep-dive features into campus life.
         </p>
 
         <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
@@ -390,7 +390,7 @@ document.body.addEventListener('pointerenter', e => {
 }, true);
 
 document.addEventListener('pointerdown', e => {
-    if (!modal.classList.contains('opacity-100')) return;
+    if (!modal.classList.contains('active')) return;
 
     const content = modal.querySelector('.modal-content');
     if (!content || !content.contains(e.target)) {
