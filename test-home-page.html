@@ -361,10 +361,11 @@ window.onload = loadArticles;
         if(!tt) return;
         showTip(t, tt.innerHTML);
     },true);
-    document.body.addEventListener('pointerleave', e=>hideTip(),true);
-})();
-    modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
+    document.addEventListener('mousedown', (e) => {
+    if (!modal.classList.contains('opacity-100')) return;
+
+    const content = modal.querySelector('.modal-content');
+    if (!content.contains(e.target)) {
         closeModal();
     }
 });
