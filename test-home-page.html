@@ -354,18 +354,19 @@ window.onload = loadArticles;
         floatTip.style.left=`${rect.left+rect.width/2}px`;
         floatTip.style.top=`${rect.top-10}px`;
     }
-    document.body.addEventListener('pointerenter', e=>{
-        const t = e.target.closest('.tooltip');
-        if(!t) return;
-        const tt = t.querySelector('.tooltiptext');
-        if(!tt) return;
-        showTip(t, tt.innerHTML);
-    },true);
-    document.addEventListener('mousedown', (e) => {
+document.body.addEventListener('pointerenter', e => {
+    const t = e.target.closest('.tooltip');
+    if (!t) return;
+    const tt = t.querySelector('.tooltiptext');
+    if (!tt) return;
+    showTip(t, tt.innerHTML);
+}, true);
+
+document.addEventListener('pointerdown', e => {
     if (!modal.classList.contains('opacity-100')) return;
 
     const content = modal.querySelector('.modal-content');
-    if (!content.contains(e.target)) {
+    if (!content || !content.contains(e.target)) {
         closeModal();
     }
 });
