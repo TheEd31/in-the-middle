@@ -1,522 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Puzzles — In The Middle</title>
+<meta charset="UTF-8">
+<title>Puzzles</title>
 
-<!-- Merriweather for headings -->
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Times+New+Roman&display=swap" rel="stylesheet">
 
 <style>
-  /* Page theme */
-  :root{
-    --navy: #003366;
-    --mid-blue: #1565c0;
-    --light-blue-bg: #e6f0ff;
-  }
-  * { box-sizing: border-box; }
-  body {
+body {
     margin: 0;
-    font-family: "Times New Roman", Times, serif;
-    background: linear-gradient(135deg, var(--light-blue-bg), #f5fbff);
-    color: var(--navy);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    padding: 36px 20px;
-  }
-  .page {
+    background: #eaf4ff;
+    font-family: "Times New Roman", serif;
+    color: #0b2545;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #d6e8ff;
+}
+::-webkit-scrollbar-thumb {
+    background: #7aa7d9;
+    border-radius: 10px;
+}
+
+.container {
     max-width: 1100px;
-    margin: 0 auto;
-  }
+    margin: 40px auto;
+    padding: 30px;
+}
 
-  h1 {
+h1, h2 {
     font-family: "Merriweather", serif;
-    color: var(--mid-blue);
-    font-size: 2.1rem;
-    text-align: center;
-    margin-bottom: 6px;
-  }
-  .subtitle {
-    text-align:center;
-    color: #0059b3;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    font-family: "Times New Roman", Times, serif;
-  }
+    color: #0b2545;
+}
 
-  .card {
-    background: #fff;
-    border-radius: 14px;
-    padding: 22px;
-    box-shadow: 0 10px 30px rgba(2,18,68,0.06);
-    margin-bottom: 26px;
-  }
+.section {
+    background: #f5faff;
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
 
-  /* Layout */
-  .layout {
+.grid {
     display: grid;
-    grid-template-columns: 1fr 420px;
-    gap: 22px;
-  }
-  @media (max-width: 1000px) {
-    .layout { grid-template-columns: 1fr; }
-  }
+    gap: 6px;
+    justify-content: center;
+    margin-top: 20px;
+}
 
-  /* Sudoku */
-  .sudoku-wrapper { display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap; }
-  .sudoku-board {
-    display: grid;
-    grid-template-columns: repeat(9, 40px);
-    grid-template-rows: repeat(9, 40px);
-    gap: 4px;
-    background: transparent;
-    user-select: none;
-  }
-  @media (max-width:600px){
-    .sudoku-board { grid-template-columns: repeat(9, 34px); grid-template-rows: repeat(9, 34px); gap:3px; }
-  }
-
-  .cell {
-    width: 100%;
-    height: 100%;
+.cell {
+    width: 36px;
+    height: 36px;
+    background: white;
     border-radius: 6px;
-    background: #fbfdff;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size: 1rem;
-    color: var(--navy);
-    box-shadow: inset 0 -1px 0 rgba(0,0,0,0.02);
-    position:relative;
-  }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    cursor: pointer;
+    user-select: none;
+}
 
-  .cell.given {
-    font-weight:700;
-    color: #081c34;
-  }
+.cell.selected {
+    background: #b6d7ff;
+}
 
-  .cell input {
-    width: 100%;
-    height: 100%;
+.word-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.word {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #d6e8ff;
+    font-weight: bold;
+}
+
+.word.found {
+    text-decoration: line-through;
+    background: #a7d3a6;
+}
+
+.unjumble-box {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.scrambled {
+    font-size: 28px;
+    letter-spacing: 6px;
+    font-weight: bold;
+}
+
+input {
+    margin-top: 12px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+button {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background: #7aa7d9;
     border: none;
-    background: transparent;
-    text-align:center;
-    font-size: 1.05rem;
-    font-family: inherit;
-    outline: none;
-    padding: 0;
-    margin:0;
-    caret-color: var(--mid-blue);
-  }
-
-  /* Thicker borders for 3x3 blocks */
-  .cell:nth-child(3n) { }
-  .border-right { box-shadow: inset -2px 0 0 rgba(0,0,0,0.06); }
-  .border-left { box-shadow: inset 2px 0 0 rgba(0,0,0,0.06); }
-  .border-bottom { box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06); }
-  .border-top { box-shadow: inset 0 2px 0 rgba(0,0,0,0.06); }
-
-  /* Invalid / highlight states */
-  .cell.invalid { background: #ffe9e9; color: #8a1f1f; }
-  .cell.highlight { background: #f0f8ff; }
-
-  /* Sudoku controls */
-  .controls { display:flex; flex-direction:column; gap:10px; width:100%; }
-  .controls .row { display:flex; gap:8px; }
-  button {
-    background: var(--mid-blue);
-    color: white;
-    border: none;
-    padding: 10px 12px;
     border-radius: 8px;
-    cursor:pointer;
-    font-weight:600;
-  }
-  button.secondary {
-    background: white; color: var(--mid-blue); border: 1px solid #cfe4ff;
-  }
-  button:active { transform: translateY(1px); }
+    font-weight: bold;
+    cursor: pointer;
+}
 
-  .small {
-    font-size:0.92rem;
-    padding:8px 10px;
-  }
-
-  .note { font-size:0.9rem; color: #165ea3; }
-
-  /* Unjumble */
-  .unjumble-list { display:flex; flex-direction:column; gap:10px; }
-  .unj-item { display:flex; gap:12px; align-items:center; }
-  .scrambled {
-    background:#f0f7ff;
-    padding:8px 10px;
-    border-radius:8px;
-    font-weight:700;
-    color: #0b4d8a;
-    min-width:110px;
-    text-align:center;
-  }
-  .unj-input {
-    flex:1;
-    display:flex;
-    gap:8px;
-    align-items:center;
-  }
-  .unj-input input {
-    width:100%;
-    padding:8px 10px;
-    border-radius:8px;
-    border:1px solid #dbeafe;
-    font-size:1rem;
-  }
-  .unj-answer { color: #0d47a1; font-weight:700; }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar { width: 10px; height:10px; }
-  ::-webkit-scrollbar-track { background: var(--light-blue-bg); }
-  ::-webkit-scrollbar-thumb { background: var(--mid-blue); border-radius:6px; }
-  ::-webkit-scrollbar-thumb:hover { background: #003366; }
-
-  /* Footer small */
-  .footer { margin-top:14px; font-size:0.9rem; color:#0d4a82; text-align:center; }
+button:hover {
+    background: #5c92cc;
+}
 </style>
 </head>
+
 <body>
-<div class="page">
-  <h1>Puzzles</h1>
-  <div class="subtitle">Interactive Sudoku and Unjumble — play, check, reveal, or reset.</div>
+<div class="container">
 
-  <div class="layout">
-    <!-- LEFT: Sudoku card -->
-    <div class="card" aria-labelledby="sudoku-title">
-      <h2 id="sudoku-title" style="font-family:'Merriweather', serif; color:var(--mid-blue); margin-top:0">Sudoku (Interactive)</h2>
-      <div class="sudoku-wrapper" style="gap:18px; align-items:flex-start">
-        <div id="board" class="sudoku-board" role="grid" aria-label="Sudoku board"></div>
+<h1>Puzzles</h1>
 
-        <div style="min-width:220px;">
-          <div class="controls">
-            <div class="row">
-              <button id="checkBtn" class="small">Check</button>
-              <button id="hintBtn" class="small secondary">Show Mistakes</button>
-            </div>
-            <div class="row">
-              <button id="revealBtn" class="small">Reveal Solution</button>
-              <button id="resetBtn" class="small secondary">Reset</button>
-            </div>
-            <div style="margin-top:10px;">
-              <div class="note">Tip: type digits 1–9. Use Check to validate your entries.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- WORD SEARCH -->
+<div class="section">
+<h2>Word Search</h2>
 
-    <!-- RIGHT: Unjumble card -->
-    <div class="card" aria-labelledby="unj-title">
-      <h2 id="unj-title" style="font-family:'Merriweather', serif; color:var(--mid-blue); margin-top:0">Unjumble</h2>
-      <p style="margin-top:4px; margin-bottom:12px; color:#0d47a1; font-family:Times;">Rearrange letters to form the correct word. Type answer and press Check.</p>
+<div id="grid" class="grid"></div>
 
-      <div class="unjumble-list" id="unjumbleList" aria-live="polite"></div>
+<div class="word-list" id="wordList"></div>
+</div>
 
-      <div style="display:flex; gap:8px; margin-top:14px;">
-        <button id="checkUnj" class="small">Check Answers</button>
-        <button id="revealUnj" class="small secondary">Reveal All</button>
-        <button id="shuffleUnj" class="small secondary">Shuffle</button>
-      </div>
+<!-- UNJUMBLE -->
+<div class="section">
+<h2>Unjumble</h2>
 
-      <div class="footer" id="unjFooter"></div>
-    </div>
-  </div>
+<div class="unjumble-box">
+    <div id="scrambled" class="scrambled"></div>
+    <input id="guess" type="text" placeholder="Your guess">
+    <br>
+    <button onclick="checkUnjumble()">Check</button>
+    <p id="unjumbleResult"></p>
+</div>
+</div>
 
-  <div style="margin-top:18px; text-align:center; color:#0d47a1;">
-    <a href="sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1" style="color:var(--mid-blue); text-decoration:none; font-family:'Merriweather', serif;">← Back to Home</a>
-  </div>
 </div>
 
 <script>
-/* ====== SUDOKU LOGIC ====== */
-// You can edit initialPuzzle and solution arrays to change the puzzle.
-const initialPuzzle = [
-  // 0 is empty
-  0,7,8,  3,0,2,  6,5,9,
-  6,5,0,  9,1,0,  0,3,4,
-  0,3,4,  5,7,6,  2,8,1,
+/* =====================
+   WORD SEARCH SETTINGS
+   ===================== */
 
-  0,6,5,  1,0,3,  0,4,7,
-  8,4,0,  0,6,0,  1,2,0,
-  3,1,7,  4,0,9,  8,0,0,
-
-  4,9,6,  8,5,0,  3,0,2,
-  0,0,3,  6,0,1,  0,7,8,
-  7,0,1,  2,3,4,  5,0,6
+const gridLetters = [
+    "D G L Z N C S P J C D T V E D R",
+    "R S I A T H P Z L F H E E M E L",
+    "E E D E L P J O N B E A F I S T",
+    "O T S E L N L Q Y M G O N H R E",
+    "A I T E M A L T O M I D S U D P",
+    "A T I G S K T R E E E J E T A H",
+    "B H N U L A S R N E Y C W T Z G",
+    "N K S Q P C Y T R F A C N I C I",
+    "P S E I Y A K N N B A A E D F E",
+    "E T L E Y E R H X E S M H I E L",
+    "T A Y G L C I S P M M T I Z K S",
+    "P R W G L E N E S L J A Z L S R",
+    "I I I N O Q G E E R O G N H Y J",
+    "T T V O H T L A V V W D P R E P",
+    "N F O G R E E S L I L J U F O B",
+    "M T W Q T P R X E G E Z M R P C"
+  
 ];
 
-const solution = [
-  1,7,8, 3,4,2, 6,5,9,
-  6,5,2, 9,1,8, 7,3,4,
-  9,3,4, 5,7,6, 2,8,1,
-
-  2,6,5, 1,8,3, 9,4,7,
-  8,4,9, 7,6,5, 1,2,3,
-  3,1,7, 4,2,9, 8,6,5,
-
-  4,9,6, 8,5,7, 3,1,2,
-  5,2,3, 6,9,1, 4,7,8,
-  7,8,1, 2,3,4, 5,9,6
+const words = [
+    "ORNAMENTS",
+    "REINDEER",
+    "RUDOLPH",
+    "KRINGLE",
+    "SLEIGH",
+    "TINSEL",
+    "EGGNOG",
+    "FAMILY",
+    "SANTA",
+    "ELVES",
+    "HOLLY",
+    "TREE"
 ];
 
-let current = []; // mutable board
-const boardEl = document.getElementById('board');
+/* =====================
+   UNJUMBLE SETTINGS
+   ===================== */
 
-function indexToRC(i){
-  return { r: Math.floor(i/9), c: i%9 };
-}
-
-function renderBoard(){
-  boardEl.innerHTML = '';
-  current = initialPuzzle.slice();
-  for(let i=0;i<81;i++){
-    const cellDiv = document.createElement('div');
-    cellDiv.className = 'cell';
-    const {r,c} = indexToRC(i);
-    // thicker borders for 3x3 visually (we use small shadows above)
-    if (c===2 || c===5) cellDiv.classList.add('border-right');
-    if (c===3 || c===6) cellDiv.classList.add('border-left');
-    if (r===2 || r===5) cellDiv.classList.add('border-bottom');
-    if (r===3 || r===6) cellDiv.classList.add('border-top');
-
-    if(initialPuzzle[i] !== 0){
-      cellDiv.classList.add('given');
-      cellDiv.textContent = initialPuzzle[i];
-    } else {
-      const input = document.createElement('input');
-      input.setAttribute('inputmode','numeric');
-      input.setAttribute('maxlength','1');
-      input.setAttribute('aria-label', 'sudoku cell ' + (i+1));
-      input.addEventListener('input', e => {
-        const v = e.target.value.replace(/[^1-9]/g,'').slice(0,1);
-        e.target.value = v;
-        const val = v ? parseInt(v,10) : 0;
-        current[i] = val;
-        validateBoard();
-      });
-      input.addEventListener('keydown', e => {
-        if(e.key === 'Backspace' || e.key === 'Delete'){
-          setTimeout(()=>{ current[i]=0; validateBoard(); },0);
-        }
-      });
-      cellDiv.appendChild(input);
-    }
-    boardEl.appendChild(cellDiv);
-  }
-  validateBoard();
-}
-
-function getRow(i){ const r = Math.floor(i/9); return current.slice(r*9, r*9+9); }
-function getCol(i){ const c = i%9; const arr=[]; for(let r=0;r<9;r++) arr.push(current[c + r*9]); return arr; }
-function getBox(i){
-  const r = Math.floor(i/9), c = i%9;
-  const br = Math.floor(r/3), bc = Math.floor(c/3);
-  const arr=[];
-  for(let rr=br*3; rr<br*3+3; rr++){
-    for(let cc=bc*3; cc<bc*3+3; cc++){
-      arr.push(current[rr*9+cc]);
-    }
-  }
-  return arr;
-}
-
-function validateBoard(showInvalid=true){
-  // mark all cells valid initially
-  const cells = boardEl.children;
-  for(let i=0;i<81;i++){
-    cells[i].classList.remove('invalid','highlight');
-  }
-
-  // check conflicts for any non-zero number
-  for(let i=0;i<81;i++){
-    const val = current[i] || 0;
-    if(val===0) continue;
-    // row
-    const row = getRow(i), col = getCol(i), box = getBox(i);
-    const rcount = row.filter(x => x===val).length;
-    const ccount = col.filter(x => x===val).length;
-    const bcount = box.filter(x => x===val).length;
-    if(rcount>1 || ccount>1 || bcount>1){
-      boardEl.children[i].classList.add('invalid');
-    }
-  }
-}
-
-function checkSolution(){
-  // compare with solution
-  let allFilled = true;
-  for(let i=0;i<81;i++){
-    if((current[i] || 0) === 0) allFilled = false;
-  }
-  if(!allFilled){
-    alert('Not complete yet. Fill all cells before checking.');
-    return;
-  }
-  const wrong = [];
-  for(let i=0;i<81;i++){
-    if(current[i] !== solution[i]) wrong.push(i);
-  }
-  if(wrong.length===0){
-    alert('Nice! You solved the puzzle.');
-  } else {
-    alert('Some entries are incorrect. Use "Show Mistakes" to see conflicts.');
-    // visually mark wrong cells (if not already caught by conflicts)
-    wrong.forEach(i => boardEl.children[i].classList.add('invalid'));
-  }
-}
-
-function revealSolution(){
-  const cells = boardEl.children;
-  for(let i=0;i<81;i++){
-    if(initialPuzzle[i] !== 0){
-      // given — already shows
-      cells[i].classList.add('given');
-    } else {
-      // set value
-      const input = cells[i].querySelector('input');
-      if(input) input.value = solution[i];
-      current[i] = solution[i];
-      cells[i].classList.remove('invalid'); 
-    }
-  }
-  // highlight revealed cells briefly
-  for(let i=0;i<81;i++){ boardEl.children[i].classList.add('highlight'); }
-  setTimeout(()=>{ for(let i=0;i<81;i++){ boardEl.children[i].classList.remove('highlight'); }}, 600);
-}
-
-function resetBoard(){
-  // clear only non-given cells
-  const cells = boardEl.children;
-  for(let i=0;i<81;i++){
-    if(initialPuzzle[i] === 0){
-      const input = cells[i].querySelector('input');
-      if(input) input.value = '';
-      current[i] = 0;
-      cells[i].classList.remove('invalid');
-    } else {
-      cells[i].classList.remove('invalid');
-    }
-  }
-}
-
-// hook buttons
-document.getElementById('checkBtn').addEventListener('click', checkSolution);
-document.getElementById('hintBtn').addEventListener('click', ()=>{ validateBoard(true); alert('Red cells indicate conflicts.'); });
-document.getElementById('revealBtn').addEventListener('click', ()=>{ if(confirm('Reveal full solution?')) revealSolution(); });
-document.getElementById('resetBtn').addEventListener('click', ()=>{ if(confirm('Reset puzzle?')) resetBoard(); });
-
-// initialize board
-renderBoard();
-
-/* ====== UNJUMBLE LOGIC ====== */
-const unjData = [
-  // scrambled, answer
-  {scr: 'Eegtrisoyn', ans:'Generosity'},
-  {scr: 'Ievl Het Psiesrt', ans:'Live The Stripes'},
-  {scr: 'Wpasnpere', ans:'Newspaper'},
-  {scr: 'Ceoppiasl Daecmay', ans:'Episcopal Academy'},
-  {scr: 'Hftai', ans:'Faith'}
+const UNJUMBLES = [
+    { answer: "Christmas", scrambled: "Scahmrtis" },
+    { answer: "Holiday", scrambled: "Yhaodli" },
+    { answer: "Menorah", scrambled: "Hmaerno" },
+    { answer: "Gift", scrambled: "Tgif" },
+    { answer: "Mistletoe", scrambled: "Emoitsetl"},
+    { answer: "Tree", scrambled: "Reet"}
 ];
 
-const unjListEl = document.getElementById('unjumbleList');
-const unjFooter = document.getElementById('unjFooter');
+let currentUnjumble = 0;
 
-function renderUnjumble(){
-  unjListEl.innerHTML = '';
-  unjData.forEach((item, idx) => {
-    const row = document.createElement('div');
-    row.className = 'unj-item';
-    const scr = document.createElement('div');
-    scr.className = 'scrambled';
-    scr.textContent = item.scr;
-    const container = document.createElement('div');
-    container.className = 'unj-input';
+/* =====================
+   WORD SEARCH LOGIC
+   ===================== */
 
-    const input = document.createElement('input');
-    input.setAttribute('aria-label','unjumble answer');
-    input.value = '';
-    const hint = document.createElement('div');
-    hint.className = 'unj-answer';
-    hint.style.display='none';
-    hint.textContent = item.ans;
+const grid = document.getElementById("grid");
+const wordList = document.getElementById("wordList");
 
-    input.addEventListener('keydown', (e)=>{
-      if(e.key === 'Enter') checkUnjumble();
+const size = gridLetters.length;
+grid.style.gridTemplateColumns = `repeat(${gridLetters[0].split(" ").length}, 36px)`;
+
+let selected = [];
+let foundWords = new Set();
+
+gridLetters.forEach(row => {
+    row.split(" ").forEach(letter => {
+        const div = document.createElement("div");
+        div.className = "cell";
+        div.textContent = letter;
+        div.onclick = () => toggleCell(div);
+        grid.appendChild(div);
     });
-
-    container.appendChild(input);
-    container.appendChild(hint);
-
-    row.appendChild(scr);
-    row.appendChild(container);
-    unjListEl.appendChild(row);
-
-    // store dom references for later
-    item._input = input;
-    item._hint = hint;
-  });
-  unjFooter.textContent = 'Scrambled words: rearrange the letters to form a correct word.';
-}
-renderUnjumble();
-
-function checkUnjumble(){
-  let correct = 0;
-  unjData.forEach(item=>{
-    const val = (item._input.value || '').trim().toUpperCase();
-    if(val === item.ans.toUpperCase()){
-      item._input.style.borderColor = '#bfe6c9';
-      item._hint.style.display='none';
-      correct++;
-    } else {
-      item._input.style.borderColor = '#ffd6d6';
-    }
-  });
-  if(correct === unjData.length){
-    alert('All correct — nice job!');
-  } else {
-    alert(correct + ' correct out of ' + unjData.length);
-  }
-}
-
-function revealUnjumble(){
-  unjData.forEach(item=>{
-    item._input.value = item.ans;
-    item._input.style.borderColor = '#bfe6c9';
-    item._hint.style.display = 'block';
-  });
-}
-
-function shuffleUnjumble(){
-  // simple Fisher-Yates shuffle of scrambled display only
-  for(let i=unjData.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [unjData[i], unjData[j]] = [unjData[j], unjData[i]];
-  }
-  renderUnjumble();
-}
-
-// button hooks
-document.getElementById('checkUnj').addEventListener('click', checkUnjumble);
-document.getElementById('revealUnj').addEventListener('click', revealUnjumble);
-document.getElementById('shuffleUnj').addEventListener('click', shuffleUnjumble);
-
-/* Accessibility: prevent accidental form submission on Enter for sudoku inputs (we handle it) */
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Enter'){
-    // prevent if focus is inside an unjumble input or sudoku cell input
-    const active = document.activeElement;
-    if(active && (active.tagName === 'INPUT')){
-      e.preventDefault();
-    }
-  }
 });
+
+words.forEach(word => {
+    const span = document.createElement("span");
+    span.className = "word";
+    span.textContent = word;
+    wordList.appendChild(span);
+});
+
+function toggleCell(cell) {
+    cell.classList.toggle("selected");
+    if (cell.classList.contains("selected")) {
+        selected.push(cell.textContent);
+    } else {
+        selected = selected.filter(l => l !== cell.textContent);
+    }
+    checkSelection();
+}
+
+function checkSelection() {
+    const guess = selected.join("");
+    if (words.includes(guess) && !foundWords.has(guess)) {
+        foundWords.add(guess);
+        document.querySelectorAll(".word").forEach(w => {
+            if (w.textContent === guess) w.classList.add("found");
+        });
+        clearSelection();
+    }
+}
+
+function clearSelection() {
+    document.querySelectorAll(".cell").forEach(c => c.classList.remove("selected"));
+    selected = [];
+}
+
+/* =====================
+   UNJUMBLE LOGIC
+   ===================== */
+
+function loadUnjumble() {
+    document.getElementById("scrambled").textContent =
+        UNJUMBLES[currentUnjumble].scrambled;
+    document.getElementById("guess").value = "";
+    document.getElementById("unjumbleResult").textContent = "";
+}
+
+function checkUnjumble() {
+    const guess = document.getElementById("guess").value.trim().toUpperCase();
+    const result = document.getElementById("unjumbleResult");
+
+    if (guess === UNJUMBLES[currentUnjumble].answer) {
+        result.textContent = "Correct!";
+        result.style.color = "green";
+        setTimeout(() => {
+            currentUnjumble = (currentUnjumble + 1) % UNJUMBLES.length;
+            loadUnjumble();
+        }, 800);
+    } else {
+        result.textContent = "Try again.";
+        result.style.color = "red";
+    }
+}
+
+loadUnjumble();
 </script>
+
 </body>
 </html>
