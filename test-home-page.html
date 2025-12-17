@@ -363,6 +363,11 @@ window.onload = loadArticles;
     },true);
     document.body.addEventListener('pointerleave', e=>hideTip(),true);
 })();
+    modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
 </script>
 </body>
 </html>
