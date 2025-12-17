@@ -110,6 +110,18 @@
         .tooltip .tooltiptext {
   display: none;
 }
+        .modal-category {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-green);
+    margin-bottom: 0.25rem;
+}
+        .tooltiptext {
+    display: none;
+}
         
     </style>
 </head>
@@ -591,7 +603,10 @@ document.body.addEventListener('pointerleave', (e) => {
             if (!article) return;
 
             // Update modal content
-            modalTitle.innerHTML = `<span class="text-sm font-semibold uppercase text-light-blue block">${article.category || 'Section'}</span>${article.title || 'Untitled'}`;
+            modalTitle.innerHTML = `
+  <span class="modal-category">${section.category}</span>
+  ${section.title}
+`;
             modalBody.innerHTML = article.content || '<p>Content missing.</p>';
             if (article.author) {
                 modalBody.innerHTML += `<p class="mt-6 text-right font-semibold text-sm italic">— By ${article.author}</p>`;
