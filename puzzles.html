@@ -290,8 +290,23 @@ function checkUnjumble() {
     }
 }
 
+      document.addEventListener("DOMContentLoaded", () => {
+    const homeButton = document.getElementById("backToHomeButton");
+    homeButton.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      if (window.opener) {
+        window.close(); // Close the programmatically opened tab
+      } else {
+        window.location.href = "https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1"; // Fallback: Redirect to home
+      }
+    });
+  });
+
 loadUnjumble();
 </script>
 
+    <p style="text-align: center;">
+      <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1" id="backToHomeButton">← Back to Home</a>
+    
 </body>
 </html>
