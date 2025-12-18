@@ -274,7 +274,21 @@ function loadUnjumble() {
 
 function checkUnjumble() {
     const guess = document.getElementById("guess").value.trim().toUpperCase();
+    const answer = UNJUMBLES[currentUnjumble].answer.toUpperCase(); // Convert answer to uppercase for comparison
     const result = document.getElementById("unjumbleResult");
+
+    if (guess === answer) { // Case-insensitive comparison
+        result.textContent = "Correct!";
+        result.style.color = "green";
+        setTimeout(() => {
+            currentUnjumble = (currentUnjumble + 1) % UNJUMBLES.length;
+            loadUnjumble();
+        }, 800);
+    } else {
+        result.textContent = "Try again.";
+        result.style.color = "red";
+    }
+}
 
     if (guess === UNJUMBLES[currentUnjumble].answer) {
         result.textContent = "Correct!";
