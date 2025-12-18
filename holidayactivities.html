@@ -121,9 +121,21 @@
 <p>Finally, decorate the reindeer as you would like with the markers!</p>
 
 
-    
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const homeButton = document.getElementById("backToHomeButton");
+    homeButton.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      if (window.opener) {
+        window.close(); // Close the programmatically opened tab
+      } else {
+        window.location.href = "https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1"; // Fallback: Redirect to home
+      }
+    });
+  });
+    </script>
     <p style="text-align: center;">
-      <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1">← Back to Home</a>
+      <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1" id="backToHomeButton">← Back to Home</a>
     </p>
   </div>
 </body>
