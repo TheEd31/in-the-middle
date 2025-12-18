@@ -105,8 +105,22 @@
     <p>
 The Student Council never stops working hard! Winter is another busy trimester for MS StuCo. The Student Council has to make the annually distributed candy canes for the Middle School to send good wishes before the middle school students depart for break. While everyone in the MS is out in the freezing cold during flex, StuCo doesn’t just hang around in the warmth of Ms. McGill's room!! They’re breaking a sweat running down the halls, printing out tags to attach to the candy canes. Then, they are sent to homerooms and given all around the Middle School. The Student Council continues to spread cheer, no matter what season it is! On behalf of the StuCo, we wish you the happiest holidays and a blessed new year!
     </p>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const homeButton = document.getElementById("backToHomeButton");
+    homeButton.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default link behavior
+      if (window.opener) {
+        window.close(); // Close the programmatically opened tab
+      } else {
+        window.location.href = "https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1"; // Fallback: Redirect to home
+      }
+    });
+  });
+    </script>
     <p style="text-align: center;">
-      <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1">← Back to Home</a>
+      <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1" id="backToHomeButton">← Back to Home</a>
+    
     </p>
   </div>
 </body>
