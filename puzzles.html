@@ -290,19 +290,6 @@ function checkUnjumble() {
     }
 }
 
-    if (guess === UNJUMBLES[currentUnjumble].answer) {
-        result.textContent = "Correct!";
-        result.style.color = "green";
-        setTimeout(() => {
-            currentUnjumble = (currentUnjumble + 1) % UNJUMBLES.length;
-            loadUnjumble();
-        }, 800);
-    } else {
-        result.textContent = "Try again.";
-        result.style.color = "red";
-    }
-}
-
 loadUnjumble();
 </script>
 
