@@ -175,7 +175,7 @@ let articles = {
                 <span class="tooltip">
                     <u><strong>
                         <a href="#"
-                           class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/chapel-council-corner?authuser=0">
+                           class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/chapel-council-corner?authuser=0">
                            Chapel Council Corner
                         </a>
                     </strong></u>
@@ -189,7 +189,7 @@ let articles = {
                 <span class="tooltip">
                     <u><strong>
                         <a href="#"
-                           class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/student-council-corner?authuser=0">
+                           class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/news-features/student-council-corner?authuser=0">
                            Student Council Corner
                         </a>
                     </strong></u>
@@ -211,12 +211,12 @@ let articles = {
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>
-            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/fun-games/puzzles?authuser=0">Crossword/Wordsearch and other Puzzles</a></u></strong>
+            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/fun-games/puzzles?authuser=0">Crossword/Wordsearch and other Puzzles</a></u></strong>
                 <span class="tooltiptext">Various puzzles created by our staff! Creators: <i>Ellie Wood ('32), Sunishka Agrawal ('32), and Tess McNeely ('31)</i></span>
             </span>
         </li>
                         <li>
-            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/fun-games/holiday-activites?authuser=0">Newspaper Holiday Activities</a></u></strong>
+            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/fun-games/holiday-activites?authuser=0">Newspaper Holiday Activities</a></u></strong>
                 <span class="tooltiptext">Fun holiday-themed activities from In The Middle! Creators: <i>Arden Cha, Ava Budreika, Campbell Baird</i></span>
             </span>
         </li>
@@ -240,17 +240,17 @@ let articles = {
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
                        <li>
-            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/art-and-culture/secret-santa-ideas?authuser=0">Secret Santa Gift Ideas</a></u></strong>
+            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/art-and-culture/secret-santa-ideas?authuser=0">Secret Santa Gift Ideas</a></u></strong>
                 <span class="tooltiptext">Gift Ideas for Secret Santa from our Editors. Authors: <i>Leo Wang ('30) and Ellen Le ('30)</i></span>
             </span>
         </li>
                         <li>
-            <span class="tooltip"><strong><u><<a href="#" class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/art-and-culture/winter-concert?authuser=0">Winter Concert</a></u></strong>
+            <span class="tooltip"><strong><u><<a href="#" class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/art-and-culture/winter-concert?authuser=0">Winter Concert</a></u></strong>
                 <span class="tooltiptext">Fresh information and news about the MS Winter Concert. Author: <i>Leo Wang ('30), Zach Chen ('30), and Adam Balogun ('30)</i></span>
             </span>
         </li>
                         <li>
-            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/art-and-culture/winter-holidays?authuser=0">Winter Holidays</a></u></strong>
+            <span class="tooltip"><strong><u><a href="#" class="article-title article-link" rel="noopener noreferrer" data-url="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/art-and-culture/winter-holidays?authuser=0">Winter Holidays</a></u></strong>
                 <span class="tooltiptext">An overview of many holidays occurring this Winter. Christmas isn't the only one! Author: <i>Ellen Le ('30)</i></span>
             </span>
         </li>
@@ -415,16 +415,22 @@ document.addEventListener('pointerdown', e => {
         closeModal();
     }
 });
-        document.addEventListener("DOMContentLoaded", () => {
-      // Get all article links
+          document.addEventListener("DOMContentLoaded", () => {
+      // Debug to ensure we process all links
+      console.log("DOM fully loaded. Attaching behavior.");
+
       const articleLinks = document.querySelectorAll(".article-link");
-      
+
       articleLinks.forEach(link => {
         link.addEventListener("click", (e) => {
-          e.preventDefault(); // Prevent default anchor tag behavior
-          const url = link.getAttribute("data-url"); // Get the article URL
-          const newWindow = window.open(url, "_blank"); // Open in a new tab
-          newWindow.opener = window; // Set the opener (allows `window.close` later)
+          console.log("Click event fired for:", e.target);
+
+          const url = link.getAttribute("href");
+          if (!url) {
+            console.error("No URL found for this link!");
+          } else {
+            console.log("Opening URL:", url);
+          }
         });
       });
     });
