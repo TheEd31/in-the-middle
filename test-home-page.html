@@ -205,11 +205,11 @@ let articles = {
     author: ""
 },
     opinion: {
-        title:"Fun & Games",
-        description:"The place for puzzles, riddles, polls, and more!",
-        category:"Section",
-        image:"https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/CrosswordUSA.svg/1200px-CrosswordUSA.svg.png",
-        content:`<p class="mb-4">The <strong>Fun & Games</strong> section is where all of the games made by our staff go! This may include word searches, crosswords, fun facts, and more! In addition, polls from the EA community will be paced here. Does everyone agree?</p>
+        title: "Fun & Games",
+        description: "The place for puzzles, riddles, polls, and more!",
+        category: "Section",
+        image: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/CrosswordUSA.svg/1200px-CrosswordUSA.svg.png",
+        content:`<p class="mb-4">The <strong>Fun & Games</strong> section is where all of the games made by our staff go! This may include word searches, crosswords, fun facts, and more! In addition, polls from the EA community will be placed here. Does everyone agree?</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
                         <li>
@@ -221,22 +221,23 @@ let articles = {
             <span class="tooltip"><strong><u><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/fun-games/holiday-activities?authuser=0" target="_blank" class="article-title">Newspaper Holiday Activities</a></u></strong>
                 <span class="tooltiptext">Fun holiday-themed activities from In The Middle! Creators: <i>Arden Cha, Ava Budreika, Campbell Baird</i></span>
             </span>
-        </li>`,
-        author:""
+        </li>
+                    </ul>`,
+        author: ""
     },
     athletics: {
-        title:"Sports & Athletics",
-        description:"Scores, team highlights, and spotlights on middle school athletes across all seasonal sports.",
-        category:"Section",
-        image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664955/episcopalacademypa/m2tmbt97ckopdavsuhx2/athlanding1.jpg",
-        content:`<p>No news here... check out a different section!</p> `,
-        author:""
+        title: "Sports & Athletics",
+        description: "Scores, team highlights, and spotlights on middle school athletes across all seasonal sports.",
+        category: "Section",
+        image: "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664955/episcopalacademypa/m2tmbt97ckopdavsuhx2/athlanding1.jpg",
+        content: `<p>No news here... check out a different section!</p>`,
+        author: ""
     },
     arts: {
-        title:"Arts & Culture",
-        description:"Coverage of theater productions, art shows, band concerts, and creative student work.",
-        category:"Section",
-        image:"https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664950/episcopalacademypa/c19kays4aib1z3aoljip/artscccg.jpg",
+        title: "Arts & Culture",
+        description: "Coverage of theater productions, art shows, band concerts, and creative student work.",
+        category: "Section",
+        image: "https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_6/v1747664950/episcopalacademypa/c19kays4aib1z3aoljip/artscccg.jpg",
         content:`<p class="mb-4">The <strong>Arts & Culture</strong> section celebrates creativity! Find reviews, interviews, and features on student artists, musicians, and performers.</p>
                     <p class="font-bold text-lg text-navy mb-2">In This Edition:</p>
                     <ul class="list-disc pl-5 space-y-1">
@@ -251,15 +252,15 @@ let articles = {
             </span>
         </li>
                         <li>
-            <span class="tooltip"><u><strong><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/arts-and-culture/winter-holidays?authuser=0" target="_blank" class="article-title">Winter Holidays</a></u></strong>
+            <span class="tooltip"><strong><u><a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/arts-and-culture/winter-holidays?authuser=0" target="_blank" class="article-title">Winter Holidays</a></u></strong>
                 <span class="tooltiptext">An overview of many holidays occurring this Winter. Christmas isn't the only one! Author: <i>Ellen Le ('30)</i></span>
             </span>
         </li>
                         
                     </ul>`,
-        author:""
+        author: ""
     },
-     join: {
+    join: {
                 title: "Join the Staff!",
                 description: "Are you interested in writing, photography, or editing? See how you can get involved!",
                 category: "Opportunity",
@@ -313,13 +314,13 @@ const modalBody = document.getElementById('modal-body');
 function loadArticles() {
     articleGrid.innerHTML = '';
     let i = 0;
-    for(const key in articles){
-        if(articles.hasOwnProperty(key)){
+    for (const key in articles) {
+        if (articles.hasOwnProperty(key)) {
             const section = articles[key];
-            const colorClass = i%2===0 ? 'red' : 'green';
+            const colorClass = i % 2 === 0 ? 'red' : 'green';
             const card = document.createElement('div');
             card.className = `article-card ${colorClass}`;
-            card.onclick = ()=>openModal(key);
+            card.onclick = () => openModal(key);
 
             const img = document.createElement('img');
             img.src = section.image || 'https://placehold.co/600x400/f0f0f0/666666?text=NO+IMAGE';
@@ -327,7 +328,7 @@ function loadArticles() {
             card.appendChild(img);
 
             const bodyDiv = document.createElement('div');
-            bodyDiv.className='card-body';
+            bodyDiv.className = 'card-body';
             bodyDiv.innerHTML = `
                 <p class="category">${section.category}</p>
                 <h2 class="title">${section.title}</h2>
@@ -340,21 +341,21 @@ function loadArticles() {
     }
 }
 
-function openModal(key){
-    const section = articles[key];
-    if(!section) return;
-modalTitle.innerHTML = `
-  <span class="modal-category">${section.category}</span>
-  ${section.title}
-`;
-    modalBody.innerHTML = section.content;
+function openModal(key) {
+    const article = articles[key];
+    if (!article) return;
+    modalTitle.innerHTML = `
+        <span class="modal-category">${article.category}</span>
+        ${article.title}
+    `;
+    modalBody.innerHTML = article.content;
     modal.classList.add('active');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow = 'hidden';
 }
 
-function closeModal(){
+function closeModal() {
     modal.classList.remove('active');
-    document.body.style.overflow='';
+    document.body.style.overflow = '';
 }
 
 window.onload = loadArticles;
@@ -362,32 +363,51 @@ window.onload = loadArticles;
 // Tooltip floating
 (function() {
     const floatTip = document.createElement('div');
-    floatTip.className='tooltip-floating';
+    floatTip.className = 'tooltip-floating';
     document.body.appendChild(floatTip);
-    let activeTarget=null, hideTimeout=null;
-    function showTip(target, html){
+    let activeTarget = null, hideTimeout = null;
+    
+    function showTip(target, html) {
         floatTip.classList.add('visible');
         clearTimeout(hideTimeout);
         activeTarget = target;
         floatTip.innerHTML = html;
         positionTip(target);
     }
-    function hideTip(){
+    
+    function hideTip() {
         floatTip.classList.remove('visible');
-        activeTarget=null;
+        activeTarget = null;
     }
-    function positionTip(target){
+    
+    function positionTip(target) {
         const rect = target.getBoundingClientRect();
-        floatTip.style.left=`${rect.left+rect.width/2}px`;
-        floatTip.style.top=`${rect.top-10}px`;
+        floatTip.style.left = `${rect.left + rect.width / 2}px`;
+        floatTip.style.top = `${rect.top - 10}px`;
     }
-document.body.addEventListener('pointerenter', e => {
-    const t = e.target.closest('.tooltip');
-    if (!t) return;
-    const tt = t.querySelector('.tooltiptext');
-    if (!tt) return;
-    showTip(t, tt.innerHTML);
-}, true);
+    document.body.addEventListener('pointerenter', e => {
+        const t = e.target.closest('.tooltip');
+        if (!t) return;
+        const tt = t.querySelector('.tooltiptext');
+        if (!tt) return;
+        showTip(t, tt.innerHTML);
+    }, true);
+
+    document.body.addEventListener('pointerleave', e => {
+        const t = e.target.closest('.tooltip');
+        const toEl = e.relatedTarget && e.relatedTarget.closest
+            ? e.relatedTarget.closest('.tooltip')
+            : null;
+        if (!t) return;
+        if (toEl) return; // moving to another tooltip
+        hideTip();
+    }, true);
+
+    document.body.addEventListener('pointermove', e => {
+        if (!activeTarget) return;
+        positionTip(activeTarget);
+    });
+})();
 
 document.addEventListener('pointerdown', e => {
     if (!modal.classList.contains('active')) return;
