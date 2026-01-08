@@ -604,8 +604,8 @@ document.body.addEventListener('pointerleave', (e) => {
 
             // Update modal content
             modalTitle.innerHTML = `
-  <span class="modal-category">${section.category}</span>
-  ${section.title}
+  <span class="modal-category">${article.category}</span>
+  ${article.title}
 `;
             modalBody.innerHTML = article.content || '<p>Content missing.</p>';
             if (article.author) {
