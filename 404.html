@@ -1,53 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Page Not Found</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #56CCF2 0%, #2F80ED 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            padding: 20px;
+        }
 
-  <style>
-    body {
-      margin: 0;
-      padding: 40px;
-      background: #e8f4ff;
-      font-family: "Times New Roman", serif;
-      color: #003366;
-      text-align: center;
-    }
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
 
-    h1 {
-      font-family: "Merriweather", serif;
-      font-size: 3em;
-      color: #0d47a1;
-      margin-bottom: 0.3em;
-    }
+        .error-code {
+            font-size: 120px;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            animation: float 10s ease-in-out infinite;
+        }
 
-    p {
-      font-size: 1.3em;
-      margin-bottom: 2em;
-    }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
 
-    a {
-      font-family: "Merriweather", serif;
-      font-size: 1.2em;
-      background: #1976d2;
-      color: white;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-    }
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
 
-    a:hover {
-      background: #1565c0;
-    }
-  </style>
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            opacity: 0.8;
+            object-fit: contain;
+        }
+    </style>
 </head>
-
 <body>
-  <h1>404 – Page Not Found</h1>
-  <p>This article as either been moved, archived, or you've gone to the wrong URL. Check the web address you've typed in, or the status of the repo at <strong><a href="github.com/TheEd31/in-the-middle">github.com/TheEd31/in-the-middle</a></strong> for more information.</p>
-<p>If you've found an issue, please contact our editors.</p>
+    <div class="container">
+        <img src="error-image.jpg" alt="404 Icon" class="icon">
+        <div class="error-code">404</div>
+        <h1>Page Not Found</h1>
+        <p>Oops! The page you're looking for seems to have wandered off. Let's get you back to reading!</p>
+        <a href="https://sites.google.com/episcopalacademy.org/inthemiddle-eamsnewspaper/in-the-middle?authuser=1" class="btn">Go Back Home</a>
+    </div>
 </body>
 </html>
