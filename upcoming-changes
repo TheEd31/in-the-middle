@@ -1,3 +1,7 @@
 *- Todo List -*
-Waiting for articles...
-+ Fix all links prep for start
++ Fix all links
++ Create template pages
++ Fix broken interactions on archive.html
+- Create 404.html
+- Change err_img.jpg
+- Switch from test-home-page.html to home-page.html
