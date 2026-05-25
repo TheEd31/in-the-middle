@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Summer Playlist | In The Middle</title>
+  <style>
+    .author {
+  font-family: "Merriweather", serif;
+  font-size: 1.1em;
+  color: #1976d2;
+  text-align: center;
+  margin-top: -0.5em;
+  margin-bottom: 1.5em;
+  font-weight: 400;
+}
+    body {
+      font-family: "Times New Roman", serif;
+      background: linear-gradient(135deg, #e6f0ff, #f5fbff);
+      color: #0d47a1;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .container {
+      max-width: 900px;
+      background: #ffffffcc;
+      margin: 3em auto;
+      padding: 3em 2em;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    h1, h2, h3 {
+      font-family: "Merriweather", serif;
+      color: #1565c0;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.15em;
+      line-height: 1.7;
+      color: #0d47a1;
+      margin: 1em 0;
+    }
+
+    ul.playlist {
+      list-style: none;
+      padding: 0;
+      margin: 1em auto;
+      max-width: 600px;
+    }
+
+    ul.playlist li {
+      font-size: 1.1em;
+      line-height: 1.8;
+      color: #0d47a1;
+      padding: 0.3em 0.5em;
+      border-bottom: 1px solid #90caf9;
+    }
+
+    ul.playlist li::before {
+      content: "♪ ";
+      color: #1976d2;
+    }
+
+    img {
+      display: block;
+      margin: 30px auto;
+      max-width: 90%;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    hr {
+      border: none;
+      border-top: 2px solid #90caf9;
+      margin: 2em auto;
+      width: 60%;
+    }
+
+    a {
+      color: #1976d2;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f0f0f0; }
+    ::-webkit-scrollbar-thumb { background: #9BCBEB; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #003057; }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 1em;
+        padding: 1.5em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>The Ultimate Summer Playlist</h1>
+    <h2 class="author">By Ellie Wood, '32</h2>
+    <p>
+      School is out, the sun is shining, and it's time to create the ultimate summer playlist. Music can turn an ordinary day into something exciting, whether you're at the pool, on a road trip, or even just relaxing at home. Summer is more than just a break from school; it's a season full of memories, adventures, and fun. Music makes the perfect backdrop to capture those moments. The right songs bring energy, excitement, and happiness to every summer activity. Every perfect summer needs the perfect playlist to go along with it—and right here is a great place to start!
+    </p>
+    <hr>
+    <h2>Top Summer Songs for 2026</h2>
+    <p>
+      The recipe for a flawless summer playlist is a mix of upbeat, catchy, high-energy songs that are easy to sing along to. Here are some of the top picks:
+    </p>
+    <ul class="playlist">
+      <li><em>I Love It</em> — Icona Pop</li>
+      <li><em>The Spins</em> — Mac Miller and Empire of the Sun</li>
+      <li><em>Time of Our Lives</em> — Pitbull and Ne-Yo</li>
+      <li><em>Feel So Close</em> — Calvin Harris</li>
+      <li><em>3 Nights</em> — Dominic Fike</li>
+      <li><em>California Gurls</em> — Katy Perry and Snoop Dogg</li>
+      <li><em>Super Bass</em> — Nicki Minaj</li>
+      <li><em>NOKIA</em> — Drake</li>
+      <li><em>Beauty and a Beat</em> — Justin Bieber and Nicki Minaj</li>
+      <li><em>12 to 12</em> — Sombr</li>
+      <li><em>Homewrecker</em> — Sombr</li>
+    </ul>
+    <p>
+      These songs are the perfect formula for the ultimate playlist—there's a mix of great tempo and vibe. As school comes close to ending, let's connect our speakers, play it at full blast, and have a great summer!
+    </p>
+    <p style="text-align: center;">
+      <a href="./home-page.html" id="backToHomeButton">← Back to Home</a>
+    </p>
+  </div>
+</body>
+</html>
